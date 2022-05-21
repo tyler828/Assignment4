@@ -74,8 +74,8 @@ public:
     // Post: This method displayed the media items in this certain category in the
     // inventory of the store through the console. This media object does not
     // change.
-    virtual void displayAllItems() = 0;
-    
+    virtual void displayAllItems() const = 0;
+
 private:
 
 };
