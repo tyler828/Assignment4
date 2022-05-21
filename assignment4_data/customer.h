@@ -51,7 +51,7 @@ public:
     //
     // Post: This method displays the transaction history with chronological order.
     // This costumer object does not change.
-    void displayHistory();
+    void displayHistory() const;
 
 private:
     // The name of this customer; the name should include the first name and
