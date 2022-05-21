@@ -51,7 +51,7 @@ public:
     // alphabetical order. This method also turns true if these two comedy movies
     // have the same title but this comedy movie was released before the other
     // one. This method returns false otherwise.
-    bool operator<(Comedy& rhs);
+    bool operator<(Comedy& rhs) const;
 
     // ---------------------------------operator>----------------------------------
     // Description: The method operator> overloads the operator >, comparing this
@@ -68,7 +68,7 @@ public:
     // alphabetical order. This method also turns true if these two comedy movies
     // have the same title but this comedy movie was released after the other
     // one. This method returns false otherwise.
-    bool operator>(Comedy& rhs);
+    bool operator>(Comedy& rhs) const;
 private:
 
 };
