@@ -27,13 +27,13 @@ public:
     // Post: A movie object that has the given title, director, release year, and
     // maximum stock exists. The current stock is initialized to the maximum stock.
     //
-    // Param: title, the title of the movie
+    // Param: title, the title of the movie.
     //
-    // Param: director, the director of the movie
+    // Param: director, the director of the movie.
     //
-    // Param: releaseYear, the year when the movie was released
+    // Param: releaseYear, the year when the movie was released.
     //
-    // Param: max, the maximum stock of the movie
+    // Param: max, the maximum stock of the movie.
     Movie(std::string title, std::string director, std::string releaseYear, int max);
 
     // ---------------------------------operator<----------------------------------
@@ -47,7 +47,7 @@ public:
     //
     // Return: True if this movie is less than the movie on the right-hand side;
     // false otherwise.
-    bool operator<(Movie& rhs);
+    virtual bool operator<(Movie& rhs) const;
 
     // ---------------------------------operator>----------------------------------
     // Description: The method operator> overloads the operator >, comparing this
@@ -60,7 +60,7 @@ public:
     //
     // Return: True if this movie is greater than the movie on the right-hand side;
     // false otherwise.
-    bool operator>(Movie& rhs);
+    virtual bool operator>(Movie& rhs) const;
 
 private:
     // The title of this movie.
