@@ -77,4 +77,6 @@ private:
 
     // The current stock of this movie.
     int stock;
+    
+    friend class DVD;
 };
