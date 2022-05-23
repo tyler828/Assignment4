@@ -112,5 +112,8 @@ private:
     // This hash table contains movie collections that contain certain categories
     // of movies. This hash table also map each movie collection to a unique
     // character.
-    MyTable<char, MovieCollection> movieTable;
+    MyTable<char, MovieCollection> collectionTable;
+
+    // How to uniquely identity each movie in a hash table?
+    MyTable<std::string, Movie> movieTable;
 };
