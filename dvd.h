@@ -33,4 +33,6 @@ public:
 
 private:
     MyTable<char, MovieCollection> table;
+    
+    MyTable<std::string, Movie> movieTable;
 };
