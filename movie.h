@@ -23,6 +23,8 @@ public:
     virtual bool operator<(Movie& rhs) const;
 
     virtual bool operator>(Movie& rhs) const;
+    
+    friend std::ostream& operator<<(std::ostream& output, const Movie& rhs);
 
 private:
 
