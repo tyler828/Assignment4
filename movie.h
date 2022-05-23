@@ -25,6 +25,8 @@ public:
     virtual bool operator>(Movie& rhs) const;
 
 private:
+
+protected:
     std::string title;
 
     std::string director;
