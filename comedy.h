@@ -22,6 +22,8 @@ public:
     bool operator<(Comedy& rhs) const;
 
     bool operator>(Comedy& rhs) const;
+    
+    friend std::ostream& operator<<(std::ostream& output, const Movie& rhs);
 private:
 
 };
