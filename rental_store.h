@@ -25,11 +25,11 @@ class RentalStore
 public:
     RentalStore();
 
-    void initializeInventory(std::ifstream input);
+    void initializeInventory(std::ifstream& input);
 
-    void addCustomers(std::ifstream input);
+    void addCustomers(std::ifstream& input);
 
-    void processCommands(std::ifstream input);
+    void processCommands(std::ifstream& input);
 
 private:
     MyTable<char, Media> mediaTable;
