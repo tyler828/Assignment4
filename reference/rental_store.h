@@ -48,7 +48,7 @@ public:
     // this method will empty the inventory before adding media items to it.
     //
     // Param: input, an ifstream object that is associated to the input file.
-    void initializeInventory(std::ifstream input);
+    void initializeInventory(std::ifstream& input);
 
     // ---------------------------------addCustomers-------------------------------
     // Description: The method addCustomers adds customers to this rental store
@@ -63,7 +63,7 @@ public:
     // discard that line and will display an error message through the console.
     //
     // Param: input, an ifstream object that is associated to the input file.
-    void addCustomers(std::ifstream input);
+    void addCustomers(std::ifstream& input);
 
     // --------------------------------processCommands-----------------------------
     // Description: The method processCommands read an input file and process the
@@ -84,7 +84,7 @@ public:
     // display an error message through the console.
     //
     // Param: input, an ifstream object that is associated to the input file.
-    void processCommands(std::ifstream input);
+    void processCommands(std::ifstream& input);
 
 private:
     // This hash table contains the media items that are available at this rental
