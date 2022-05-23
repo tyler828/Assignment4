@@ -69,7 +69,7 @@ public:
     // have the same title but this comedy movie was released after the other
     // one. This method returns false otherwise.
     bool operator>(const Comedy& rhs) const;
-    
+
     friend std::ostream& operator<<(std::ostream& output, const Comedy& rhs);
 private:
 
