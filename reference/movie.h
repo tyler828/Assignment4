@@ -61,7 +61,7 @@ public:
     // Return: True if the current stock of this movie is greater than that of the
     // movie on the right-hand side; false otherwise.
     virtual bool operator>(const Movie& rhs) const;
-    
+
     friend std::ostream& operator<<(std::ostream& output, const Movie& rhs);
 
 private:
