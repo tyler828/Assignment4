@@ -70,7 +70,7 @@ public:
     // one. This method returns false otherwise.
     bool operator>(const Comedy& rhs) const;
     
-    friend std::ostream& operator<<(std::ostream& output, const Movie& rhs);
+    friend std::ostream& operator<<(std::ostream& output, const Comedy& rhs);
 private:
 
 };
