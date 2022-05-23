@@ -18,64 +18,21 @@
 class Movie
 {
 public:
-    // --------------------------Parametrized Constructor--------------------------
-    // Description: The parametrized constructor creates a movie object based on
-    // the given title, director, release year, and maximum stock.
-    //
-    // Pre: The given information must correctly represent the movie.
-    //
-    // Post: A movie object that has the given title, director, release year, and
-    // maximum stock exists. The current stock is initialized to the maximum stock.
-    //
-    // Param: title, the title of the movie.
-    //
-    // Param: director, the director of the movie.
-    //
-    // Param: releaseYear, the year when the movie was released.
-    //
-    // Param: max, the maximum stock of the movie.
     Movie(std::string title, std::string director, std::string releaseYear, int max);
 
-    // ---------------------------------operator<----------------------------------
-    // Description: The method operator< overloads the operator <, comparing this
-    // movie, which is on the left-hand side of the operator <, with the movie
-    // object on the right-hand side.
-    //
-    // Post: These two movie objects do not change.
-    //
-    // Param: rhs, which is the movie object on the right-hand side.
-    //
-    // Return: True if this movie is less than the movie on the right-hand side;
-    // false otherwise.
     virtual bool operator<(Movie& rhs) const;
 
-    // ---------------------------------operator>----------------------------------
-    // Description: The method operator> overloads the operator >, comparing this
-    // movie, which is on the left-hand side of the operator >, with the movie
-    // object on the right-hand side.
-    //
-    // Post: These two movie objects do not change.
-    //
-    // Param: rhs, which is the movie object on the right-hand side.
-    //
-    // Return: True if this movie is greater than the movie on the right-hand side;
-    // false otherwise.
     virtual bool operator>(Movie& rhs) const;
 
 private:
-    // The title of this movie.
     std::string title;
 
-    // The director of this movie.
     std::string director;
 
-    // The year when this movie was released.
     std::string releaseYear;
 
-    // The maximum stock of this movie.
     int max;
 
-    // The current stock of this movie.
     int stock;
     
     friend class DVD;
