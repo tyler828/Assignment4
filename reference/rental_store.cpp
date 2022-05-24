@@ -43,7 +43,7 @@ RentalStore::RentalStore()
 // the console. If the inventory is not empty when this method is called,
 // this method will empty the inventory before adding media items to it.
 //
-// Param: input, an ifstream object that is associated to the input file.
+// Param: input, an ifstream object that is associated with the input file.
 void RentalStore::initializeInventory(std::ifstream& input)
 {
     // Pseudo Code
@@ -69,7 +69,7 @@ void RentalStore::initializeInventory(std::ifstream& input)
 // rental store. If a line in the input file is invalid, this method will
 // discard that line and will display an error message through the console.
 //
-// Param: input, an ifstream object that is associated to the input file.
+// Param: input, an ifstream object that is associated with the input file.
 void RentalStore::addCustomers(std::ifstream& input)
 {
     // Pseudo Code
@@ -101,7 +101,7 @@ void RentalStore::addCustomers(std::ifstream& input)
 // in the input file is invalid, this method will discard that line and will
 // display an error message through the console.
 //
-// Param: input, an ifstream object that is associated to the input file.
+// Param: input, an ifstream object that is associated with the input file.
 void RentalStore::processCommands(std::ifstream& input)
 {
     // Pseudo Code

@@ -12,7 +12,7 @@
 // Date of Last Modification:
 //
 // Purpose: This file is the header file of the DVD class, a subclass of the
-// media class. The DVD class represents the movie DVDs that are available at a
+// Media class. The DVD class represents the movie DVDs that are available at a
 // media rental or retail store. This class allows the client to add new movie
 // DVDs to the inventory of the store, update the inventory when a DVD is
 // borrowed or returned, and display all the movie DVDs in the inventory of
