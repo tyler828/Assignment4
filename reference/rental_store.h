@@ -66,8 +66,8 @@ public:
     void addCustomers(std::ifstream& input);
 
     // --------------------------------processCommands-----------------------------
-    // Description: The method processCommands read an input file and process the
-    // commands in the input file.
+    // Description: The method processCommands reads an input file and processes
+    // the commands in the input file.
     //
     // Pre: Each line in the input file must be of a specific format that
     // represents a command. For displaying the inventory of this rental store,
