@@ -110,10 +110,12 @@ public:
 
 private:
     // This hash table contains movie collections that contain certain categories
-    // of movies. This hash table also map each movie collection to a unique
+    // of movies. This hash table also maps each movie collection to a unique
     // character.
     MyTable<char, MovieCollection> collectionTable;
 
-    // How to uniquely identity each movie in a hash table?
-    MyTable<std::string, Movie> movieTable;
+    // This hash table contains the pointer to each movie in the inventory. This
+    // hash table maps each pointer to a string. The purpose of this hash table
+    // is to provide efficient access to each movie.
+    MyTable<std::string, Movie*> movieTable;
 };
