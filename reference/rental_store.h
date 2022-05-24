@@ -47,7 +47,7 @@ public:
     // the console. If the inventory is not empty when this method is called,
     // this method will empty the inventory before adding media items to it.
     //
-    // Param: input, an ifstream object that is associated to the input file.
+    // Param: input, an ifstream object that is associated with the input file.
     void initializeInventory(std::ifstream& input);
 
     // ---------------------------------addCustomers-------------------------------
@@ -62,7 +62,7 @@ public:
     // rental store. If a line in the input file is invalid, this method will
     // discard that line and will display an error message through the console.
     //
-    // Param: input, an ifstream object that is associated to the input file.
+    // Param: input, an ifstream object that is associated with the input file.
     void addCustomers(std::ifstream& input);
 
     // --------------------------------processCommands-----------------------------
@@ -83,12 +83,12 @@ public:
     // in the input file is invalid, this method will discard that line and will
     // display an error message through the console.
     //
-    // Param: input, an ifstream object that is associated to the input file.
+    // Param: input, an ifstream object that is associated with the input file.
     void processCommands(std::ifstream& input);
 
 private:
     // This hash table contains the media items that are available at this rental
-    // store. This hash table also map each category of media item to a unique
+    // store. This hash table also maps each category of media item to a unique
     // character.
     MyTable<char, Media> mediaTable;
 
