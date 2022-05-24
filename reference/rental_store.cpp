@@ -48,10 +48,11 @@ void RentalStore::initializeInventory(std::ifstream& input)
 {
     // Pseudo Code
     //
+    // Empty the media table.
     // Add an DVD object to the media table.
     // for each line in the input file
     // {
-    //     Call the addItem method on the DVD object. Pass each line to the addItem
+    //     Call the addItem method on the DVD object. Pass the line to the addItem
     //     method as a string.
     // }
 }
@@ -127,16 +128,23 @@ void RentalStore::processCommands(std::ifstream& input)
     //     }
     //     else if action type is B
     //     {
-    //         Parse the line for the customer ID and the media type.
-    //         if the customer ID exists in the customer table and the media type
-    //         exists in the media table
+    //         Parse the line for the customer ID.
+    //         if the customer ID exists in the customer table
     //         {
-    //             Call the method borrowItem on the DVD object. Pass the rest of
-    //             the line as the parameter.
-    //             if borrowItem returns true
+    //             Parse the line for the media type.
+    //             if the media type exists in the media table
     //             {
-    //                 Call the method addHistory on the customer object with this
-    //                 ID.
+    //                 Call the method borrowItem on the DVD object. Pass the rest of
+    //                 the line as the parameter.
+    //                 if borrowItem returns true
+    //                 {
+    //                     Call the method addHistory on the customer object with this
+    //                     ID.
+    //                 }
+    //             }
+    //             else
+    //             {
+    //                 Display an error message.
     //             }
     //         }
     //         else
@@ -146,16 +154,23 @@ void RentalStore::processCommands(std::ifstream& input)
     //     }
     //     else if action type is R
     //     {
-    //         Parse the line for the customer ID and the media type.
-    //         if the customer ID exists in the customer table and the media type
-    //         exists in the media table
+    //         Parse the line for the customer ID.
+    //         if the customer ID exists in the customer table
     //         {
-    //             Call the method returnItem on the DVD object. Pass the rest of
-    //             the line as the parameter.
-    //             if returnItem returns true
+    //             Parse the line for the media type.
+    //             if the media type exists in the media table
     //             {
-    //                 Call the method addHistory on the customer object with this
-    //                 ID.
+    //                 Call the method returnItem on the DVD object. Pass the rest of
+    //                 the line as the parameter.
+    //                 if returnItem returns true
+    //                 {
+    //                     Call the method addHistory on the customer object with this
+    //                     ID.
+    //                 }
+    //             }
+    //             else
+    //             {
+    //                 Display an error message.
     //             }
     //         }
     //         else
