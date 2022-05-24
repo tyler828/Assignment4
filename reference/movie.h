@@ -7,10 +7,10 @@
 // Creation Date: 5/19/2022
 // Date of Last Modification:
 //
-// Purpose: This file is the header file of the movie class. The movie class
+// Purpose: This file is the header file of the Movie class. The Movie class
 // stores the title, the director, and the release year of a movie that is
-// available at a rental or retail store. Most importantly, the movie class
-// stores the maximum stock and the remaining stock of the movie. The movie
+// available at a rental or retail store. Most importantly, the Movie class
+// stores the maximum stock and the remaining stock of the movie. The Movie
 // class also overloads the comparison operators for the comparison of two
 // movies.
 // ----------------------------------------------------------------------------
@@ -39,29 +39,41 @@ public:
     // ---------------------------------operator<----------------------------------
     // Description: The method operator< overloads the operator <, comparing this
     // movie, which is on the left-hand side of the operator <, with the movie
-    // object on the right-hand side based on their current stocks.
+    // object on the right-hand side.
     //
     // Post: These two movie objects do not change.
     //
     // Param: rhs, which is the movie object on the right-hand side.
     //
-    // Return: True if the current stock of this movie is less than that of the
-    // movie on the right-hand side; false otherwise.
-    virtual bool operator<(const Movie& rhs) const;
+    // Return: True if this movie is less than the movie on the right-hand side;
+    // false otherwise.
+    virtual bool operator<(const Movie& rhs) const = 0;
 
     // ---------------------------------operator>----------------------------------
     // Description: The method operator> overloads the operator >, comparing this
     // movie, which is on the left-hand side of the operator >, with the movie
-    // object on the right-hand side based on their current stocks.
+    // object on the right-hand side.
     //
     // Post: These two movie objects do not change.
     //
     // Param: rhs, which is the movie object on the right-hand side.
     //
-    // Return: True if the current stock of this movie is greater than that of the
-    // movie on the right-hand side; false otherwise.
-    virtual bool operator>(const Movie& rhs) const;
+    // Return: True if this movie is greater than the movie on the right-hand side;
+    // false otherwise.
+    virtual bool operator>(const Movie& rhs) const = 0;
 
+    // ---------------------------------operator<<----------------------------------
+    // Description: The method operator<< overloads the operator <<, displaying the
+    // movie on the right-hand side of the operator << through the ostream object
+    // on the left-hand side.
+    //
+    // Post: This method displayed the movie through the ostream object.
+    //
+    // Param: output, which is the ostream object.
+    //
+    // Param: rhs, which is the movie to display.
+    //
+    // Return: A reference to the ostream object.
     friend std::ostream& operator<<(std::ostream& output, const Movie& rhs);
 
 private:

@@ -8,8 +8,8 @@
 // Creation Date: 5/19/2022
 // Date of Last Modification:
 //
-// Purpose: This file is the header file of the comedy class, a subclass of the
-// movie class. The comedy class overwrites the comparison operators so that
+// Purpose: This file is the header file of the Comedy class, a subclass of the
+// Movie class. The Comedy class overwrites the comparison operators so that
 // the comparison of two comedy movies is based on their titles, then the years
 // they were released.
 // ----------------------------------------------------------------------------
@@ -48,7 +48,7 @@ public:
     //
     // Return: This method returns true if the title of this comedy movie comes
     // before the title of the comedy movie on the right-hand side with an
-    // alphabetical order. This method also turns true if these two comedy movies
+    // alphabetical order. This method also returns true if these two comedy movies
     // have the same title but this comedy movie was released before the other
     // one. This method returns false otherwise.
     bool operator<(const Comedy& rhs) const;
@@ -65,11 +65,23 @@ public:
     //
     // Return: This method returns true if the title of this comedy movie comes
     // after the title of the comedy movie on the right-hand side with an
-    // alphabetical order. This method also turns true if these two comedy movies
+    // alphabetical order. This method also returns true if these two comedy movies
     // have the same title but this comedy movie was released after the other
     // one. This method returns false otherwise.
     bool operator>(const Comedy& rhs) const;
 
+    // ---------------------------------operator<<----------------------------------
+    // Description: The method operator<< overloads the operator <<, displaying the
+    // comedy movie on the right-hand side of the operator << through the ostream
+    // object on the left-hand side.
+    //
+    // Post: This method displayed the comedy movie through the ostream object.
+    //
+    // Param: output, which is the ostream object.
+    //
+    // Param: rhs, which is the comedy movie to display.
+    //
+    // Return: A reference to the ostream object.
     friend std::ostream& operator<<(std::ostream& output, const Comedy& rhs);
 private:
 
