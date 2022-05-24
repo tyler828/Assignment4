@@ -7,9 +7,9 @@
 // Creation Date: 5/21/2022
 // Date of Last Modification:
 //
-// Purpose: This file is the header file of the movie collection class. The
-// movie collection class contains a certain category of movie. The client can
-// insert a certain category of movie into a movie collection object, retrieve
+// Purpose: This file is the header file of the MovieCollection class. The
+// MovieCollection class contains a certain category of movie. The client can
+// insert a certain category of movie into a MovieCollection object, retrieve
 // a movie in the movie collection, and display all movies in the movie
 // collection.
 // ----------------------------------------------------------------------------
