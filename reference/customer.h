@@ -8,7 +8,7 @@
 // Creation Date: 5/19/2022
 // Date of Last Modification:
 //
-// Purpose: This file is the header file of the customer class. The customer
+// Purpose: This file is the header file of the customer class. The Customer
 // class stores the name of a customer of a media rental store and the
 // transaction history of the customer. When the customer borrows something
 // from or returns something to the rental store, this transaction can be added
