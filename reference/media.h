@@ -7,7 +7,7 @@
 // Creation Date: 5/21/2022
 // Date of Last Modification:
 //
-// Purpose: This file is the header file of the media class. The media class
+// Purpose: This file is the header file of the media class. The Media class
 // represents one category of media item that is available at a media rental or
 // retail store. This class allows the client to add new media items to the
 // inventory of the store, update the inventory when a media item is borrowed
