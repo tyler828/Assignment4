@@ -34,7 +34,9 @@ MyTable<T1, T2>::MyTable()
 template <class T1, class T2>
 MyTable<T1, T2>::~MyTable()
 {
-    // For each bucket in this hash table, delete all the nodes in the bucket.
+    // For each bucket that is not empty in this hash table, delete all the
+    // values in the bucket. In other words, delete the nodes that store the
+    // values in the bucket.
     for (int i = 0; i < BUCKETS; i++)
     {
         while (buckets[i] != nullptr)

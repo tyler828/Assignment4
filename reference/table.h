@@ -30,6 +30,8 @@ public:
     // free.
     ~MyTable();
 
+
+
 private:
     // My table uses open hashing. The Node struct represents a node that
     // stores a value in the bucket.
