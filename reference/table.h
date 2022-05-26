@@ -50,6 +50,24 @@ public:
     // Param: value, the value of the key.
     void insert(const T1& key, const T2& value);
 
+    // ----------------------------------operator[]--------------------------------
+    // Description: The method operator[] overloads the operator [], allowing
+    // an array-style access to a value in this hash table through a key.
+    //
+    // Pre: The given key should be mapped to a value in this hash table, and the
+    // given key must match the data type that was specified.
+    //
+    // Post: The method returns a reference to the value that is mapped to the
+    // given key. If the given key is not mapped to any values in this hash table,
+    // this method will map the given key to a new value (which may be garbage),
+    // add this key-value pair to this hash table, and return the reference to
+    // this value.
+    //
+    // Param: key, the key through which a value could be accessed.
+    //
+    // Return: A reference to a value in this hash table.
+    T2& operator[](const T1& key);
+
 private:
     // My table uses open hashing. The Node struct represents a node in a
     // bucket. The node stores a value and the key of this value.

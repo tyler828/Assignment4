@@ -82,7 +82,7 @@ void MyTable<T1, T2>::insert(const T1& key, const T2& value)
     // 4. Overload the operator % using a free function.
 
     // Compute the hash value based on the hash function. The hash function
-    // that this method uses is key % BUCKETS.
+    // that this hash table uses is key % BUCKETS.
     int hashValue = key % BUCKETS;
 
     // Locate the bucket based on the hash value. If the bucket is empty,
@@ -138,3 +138,37 @@ void MyTable<T1, T2>::insert(const T1& key, const T2& value)
         }
     }
 } // end of the method insert
+
+// ----------------------------------operator[]--------------------------------
+// Description: The method operator[] overloads the operator [], allowing
+// an array-style access to a value in this hash table through a key.
+//
+// Pre: The given key should be mapped to a value in this hash table, and the
+// given key must match the data type that was specified.
+//
+// Post: The method returns a reference to the value that is mapped to the
+// given key. If the given key is not mapped to any values in this hash table,
+// this method will map the given key to a new value (which may be garbage),
+// add this key-value pair to this hash table, and return the reference to
+// this value.
+//
+// Param: key, the key through which a value could be accessed.
+//
+// Return: A reference to a value in this hash table.
+template <class T1, class T2>
+T2& MyTable<T1, T2>::operator[](const T1& key)
+{
+    // Compute the hash value based on the hash function. The hash function
+    // that this hash table uses is key % BUCKETS.
+    int hashValue = key % BUCKETS;
+
+    // Locate the bucket and the value that is mapped to the given key.
+    if (buckets[hashValue] != nullptr)
+    {
+        Node* current =
+    }
+    else
+    {
+
+    }
+}
