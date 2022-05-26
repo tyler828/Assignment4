@@ -1,5 +1,3 @@
-#include "table.h"
-
 // -------------------------------- table.cpp ---------------------------------
 // Programmer Name: Po-Lin Tu     Course Section Number: CSS 343 B
 // Creation Date: 5/26/2022
@@ -98,24 +96,30 @@ void MyTable<T1, T2>::insert(const T1& key, const T2& value)
         buckets[hashValue] = newNode;
     }
     // If the bucket is not empty, travers through the nodes in the bucket
-    // before put the value into the bucket.
+    // before putting the value into the bucket.
     else
     {
         Node* current = buckets[hashValue];
         bool duplicate = false;
 
         // Find the last node of the linked nodes in the bucket and check
-        // whether there are duplicated keys.
+        // whether there are duplicated keys. If there is a duplicated key,
+        // replace the original value that was mapped to this key with the
+        // given value.
+        if (current -> key == key)
+        {
+            current -> value = value;
+            duplicate = true;
+        }
         while (!duplicate && current -> next != nullptr)
         {
-            // If there is a duplicated key, replace the original value that
-            // was mapped to this key with the given value.
+            current = current -> next;
+
             if (current -> key == key)
             {
                 current -> value = value;
                 duplicate = true;
             }
-            current = current -> next;
         }
 
         // If there are not any duplicated keys, insert a new node at the end
