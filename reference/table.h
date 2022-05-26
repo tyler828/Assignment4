@@ -36,8 +36,11 @@ private:
         }
     };
 
+    // The number of buckets in the hash table.
+    static const int BUCKETS = 100;
+
     // An array that has 100 buckets to store the values.
-    Node* buckets[100];
+    Node* buckets[BUCKETS];
 };
 
 #include "table.cpp"

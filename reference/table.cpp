@@ -17,5 +17,5 @@ template <class T1, class T2>
 MyTable<T1, T2>::MyTable()
 {
     // Initialize the array.
-    buckets = {nullptr};
+    for ()
 } // end of the default constructor
