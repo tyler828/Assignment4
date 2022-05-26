@@ -11,7 +11,7 @@
 // key.
 
 // T1 is the type of the key; T2 is the type of the value.
-template <class T1, T2>
+template <class T1, class T2>
 class MyTable
 {
 public:
@@ -39,3 +39,5 @@ private:
     // An array that has 100 buckets to store the values.
     Node* buckets[100];
 };
+
+#include "table.cpp"
