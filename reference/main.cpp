@@ -3,10 +3,11 @@
 
 int main()
 {
-    MyTable<char, std::string> test;
-    test.insert('A', "Test A_1");
-    test.insert('A', "Test A_2");
-    test.insert('<', "Test <_1");
-    test.insert(';', "Test;_1");
+    MyTable<int, char> test;
+    test.insert(143, 'A');
+    test.insert(43, 'B');
+    test.insert(243, 'C');
+    test.insert(2, 'D');
+    test.insert(2, 'E');
     return 0;
 }

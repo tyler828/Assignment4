@@ -1,3 +1,5 @@
+#include "table.h"
+
 // -------------------------------- table.cpp ---------------------------------
 // Programmer Name: Po-Lin Tu     Course Section Number: CSS 343 B
 // Creation Date: 5/26/2022
