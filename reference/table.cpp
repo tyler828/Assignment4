@@ -97,7 +97,8 @@ void MyTable<T1, T2>::insert(const T1& key, const T2& value)
         // Put the new node into the bucket.
         buckets[hashValue] = newNode;
     }
-    // If the bucket is not empty, travers through the nodes in the bucket.
+    // If the bucket is not empty, travers through the nodes in the bucket
+    // before put the value into the bucket.
     else
     {
         Node* current = buckets[hashValue];
