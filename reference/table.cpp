@@ -1,3 +1,5 @@
+// #include "table.h"
+
 // -------------------------------- table.cpp ---------------------------------
 // Programmer Name: Po-Lin Tu     Course Section Number: CSS 343 B
 // Creation Date: 5/26/2022
@@ -17,5 +19,8 @@ template <class T1, class T2>
 MyTable<T1, T2>::MyTable()
 {
     // Initialize the array.
-    for ()
+    for (int i = 0; i < BUCKETS; i++)
+    {
+        buckets[i] = nullptr;
+    }
 } // end of the default constructor
