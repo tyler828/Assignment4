@@ -51,8 +51,8 @@ public:
     void insert(const T1& key, const T2& value);
 
 private:
-    // My table uses open hashing. The Node struct represents a node that
-    // stores a value in a bucket and the key of this value.
+    // My table uses open hashing. The Node struct represents a node in a
+    // bucket. The node stores a value and the key of this value.
     struct Node
     {
         Node* next;

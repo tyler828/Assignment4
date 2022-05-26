@@ -74,19 +74,60 @@ MyTable<T1, T2>::~MyTable()
 template <class T1, class T2>
 void MyTable<T1, T2>::insert(const T1& key, const T2& value)
 {
+    // Note: This hash table does not support string keys. There are four
+    // solutions to this problem:
+    // 1. Make the key of this hash table specific.
+    // 2. Do not use strings as keys.
+    // 3. Do not use this hash table for individual movies.
+    // 4. Overload the operator % using a free function.
+
     // Compute the hash value based on the hash function. The hash function
     // that this method uses is key % BUCKETS.
     int hashValue = key % BUCKETS;
 
-    // Locate the bucket that the hash value identifies and put the node
-    // into the bucket.
+    // Locate the bucket based on the hash value. If the bucket is empty,
+    // directly put the given value into the bucket.
     if (buckets[hashValue] == nullptr)
     {
-        // Create a new node that represents a key-value pair.
+        // Create a new node that stores the given key and the given value.
         Node* newNode = new Node();
         newNode -> key = key;
         newNode -> value = value;
 
+        // Put the new node into the bucket.
         buckets[hashValue] = newNode;
     }
-}
+    // If the bucket is not empty, travers through the nodes in the bucket.
+    else
+    {
+        Node* current = buckets[hashValue];
+        bool duplicate = false;
+
+        // Find the last node of the linked nodes in the bucket and check
+        // whether there are duplicated keys.
+        while (!duplicate && current -> next != nullptr)
+        {
+            // If there is a duplicated key, replace the original value that
+            // was mapped to this key with the given value.
+            if (current -> key == key)
+            {
+                current -> value = value;
+                duplicate = true;
+            }
+            current = current -> next;
+        }
+
+        // If there are not any duplicated keys, insert a new node at the end
+        // of the linked nodes.
+        if (!duplicate)
+        {
+            // Create a new node that represents a key-value pair.
+            Node* newNode = new Node();
+            newNode -> key = key;
+            newNode -> value = value;
+
+            // Insert the new node.
+            current -> next = newNode;
+        }
+    }
+} // end of the method insert
