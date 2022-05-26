@@ -49,3 +49,23 @@ MyTable<T1, T2>::~MyTable()
         }
     }
 } // end of the destructor
+
+// ------------------------------------insert----------------------------------
+// Description: The method insert receives a key and a value as its parameters,
+// mapping the key to the value. This method then inserts this key-value pair
+// into this hash table.
+//
+// Pre: The given key should be unique; it should be different from the other
+// keys in this hash table. Additionally, the given key must be a first class
+// object that supports mathematical operators. Finally, the given key and the
+// given value must match the data types that were specified when this hash
+// table was created.
+//
+// Post: This method inserted the given key and the given value into this hash
+// table. If the given key is not unique, the value that was mapped to this
+// key will be overwritten by the given value.
+//
+// Param: key, the key of the value.
+//
+// Param: value, the value of the key.
+void insert(T1 key, T2 value);
