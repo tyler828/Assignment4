@@ -94,5 +94,5 @@ private:
 
     // This hash table contains the customers of this rental store and maps each
     // customer to a unique ID.
-    MyTable<std::string, Customer> customerTable;
+    MyTable<int, Customer> customerTable;
 };

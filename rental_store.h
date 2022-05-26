@@ -34,5 +34,5 @@ public:
 private:
     MyTable<char, Media> mediaTable;
     
-    MyTable<std::string, Customer> customerTable;
+    MyTable<int, Customer> customerTable;
 };

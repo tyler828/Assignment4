@@ -34,6 +34,9 @@ MyTable<T1, T2>::MyTable()
 template <class T1, class T2>
 MyTable<T1, T2>::~MyTable()
 {
+    // Note: There may be a problem if we use both hash tables and binary
+    // search trees to store pointers to movies.
+
     // For each bucket that is not empty in this hash table, delete all the
     // values in the bucket. In other words, delete the nodes that store the
     // values in the bucket.
@@ -68,4 +71,22 @@ MyTable<T1, T2>::~MyTable()
 // Param: key, the key of the value.
 //
 // Param: value, the value of the key.
-void insert(T1 key, T2 value);
+template <class T1, class T2>
+void MyTable<T1, T2>::insert(const T1& key, const T2& value)
+{
+    // Compute the hash value based on the hash function. The hash function
+    // that this method uses is key % BUCKETS.
+    int hashValue = key % BUCKETS;
+
+    // Locate the bucket that the hash value identifies and put the node
+    // into the bucket.
+    if (buckets[hashValue] == nullptr)
+    {
+        // Create a new node that represents a key-value pair.
+        Node* newNode = new Node();
+        newNode -> key = key;
+        newNode -> value = value;
+
+        buckets[hashValue] = newNode;
+    }
+}

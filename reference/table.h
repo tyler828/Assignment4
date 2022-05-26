@@ -48,11 +48,11 @@ public:
     // Param: key, the key of the value.
     //
     // Param: value, the value of the key.
-    void insert(T1 key, T2 value);
+    void insert(const T1& key, const T2& value);
 
 private:
     // My table uses open hashing. The Node struct represents a node that
-    // stores a value in the bucket.
+    // stores a value in a bucket and the key of this value.
     struct Node
     {
         Node* next;
