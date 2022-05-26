@@ -1,4 +1,4 @@
-// #include "table.h"
+#include "table.h"
 
 // -------------------------------- table.cpp ---------------------------------
 // Programmer Name: Po-Lin Tu     Course Section Number: CSS 343 B
@@ -24,3 +24,26 @@ MyTable<T1, T2>::MyTable()
         buckets[i] = nullptr;
     }
 } // end of the default constructor
+
+// ----------------------------------Destructor--------------------------------
+// Description: The destructor deletes this hash table, freeing the memory that
+// was dynamically allocated to this hash table.
+//
+// Post: This hash table does not exist. The dynamically allocated memory is
+// free.
+template <class T1, class T2>
+MyTable<T1, T2>::~MyTable()
+{
+    // For each bucket in this hash table, delete all the nodes in the bucket.
+    for (int i = 0; i < BUCKETS; i++)
+    {
+        while (buckets[i] != nullptr)
+        {
+            // Delete the first node in the bucket.
+            Node* temp = buckets[i];
+            buckets[i] = buckets[i] -> next;
+            delete temp;
+            temp = nullptr;
+        }
+    }
+} // end of the destructor

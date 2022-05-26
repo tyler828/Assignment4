@@ -22,6 +22,14 @@ public:
     // table stores a null pointer.
     MyTable();
 
+    // ----------------------------------Destructor--------------------------------
+    // Description: The destructor deletes this hash table, freeing the memory that
+    // was dynamically allocated to this hash table.
+    //
+    // Post: This hash table does not exist. The dynamically allocated memory is
+    // free.
+    ~MyTable();
+
 private:
     // My table uses open hashing. The Node struct represents a node that
     // stores a value in the bucket.
