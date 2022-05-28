@@ -3,7 +3,7 @@
 #include "movie.h"
 
 // ---------------------------- movie_collection.h ----------------------------
-// Programmer Name: Team C--     Course Section Number: CSS 343 B
+// Programmer Name: Po-Lin Tu     Course Section Number: CSS 343 B
 // Creation Date: 5/21/2022
 // Date of Last Modification:
 //
