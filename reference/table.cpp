@@ -83,7 +83,7 @@ void MyTable<T1, T2>::insert(const T1& key, const T2& value)
 
     // Compute the hash value based on the hash function. The hash function
     // that this hash table uses is key % BUCKETS.
-    int hashValue = key % BUCKETS;
+    int hashValue = hash(key);
 
     // Locate the bucket based on the hash value. If the bucket is empty,
     // directly put the given value into the bucket.
@@ -160,7 +160,7 @@ T2& MyTable<T1, T2>::operator[](const T1& key)
 {
     // Compute the hash value based on the hash function. The hash function
     // that this hash table uses is key % BUCKETS.
-    int hashValue = key % BUCKETS;
+    int hashValue = hash(key);
 
     // Locate the bucket based on the hash value. If the bucket is not empty,
     // travers through the nodes in the bucket to retrieve the value that is
@@ -200,3 +200,21 @@ T2& MyTable<T1, T2>::operator[](const T1& key)
         return newNode -> value;
     }
 } // end of the method operator[]
+
+// -------------------------------------hash-----------------------------------
+// Description:The method hash computes the hash value with the given key.
+// The hash function that this hash table uses is key % BUCKETS (the number of
+// buckets).
+//
+// Pre: The given key must match the data type that was specified.
+//
+// Post: This method returns the hash value. This hash table does not change.
+//
+// Param: key, the key whose hash value is to be computed.
+//
+// Return: The hash value of the given key.
+template <class T1, class T2>
+int MyTable<T1, T2>::hash(const T1& key) const
+{
+    return key % BUCKETS;
+} // end of the hash function

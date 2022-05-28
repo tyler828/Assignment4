@@ -88,6 +88,20 @@ private:
 
     // An array that has 100 buckets to store the values.
     Node* buckets[BUCKETS];
+
+    // -------------------------------------hash-----------------------------------
+    // Description:The method hash computes the hash value with the given key.
+    // The hash function that this hash table uses is key % BUCKETS (the number of
+    // buckets).
+    //
+    // Pre: The given key must match the data type that was specified.
+    //
+    // Post: This method returns the hash value. This hash table does not change.
+    //
+    // Param: key, the key whose hash value is to be computed.
+    //
+    // Return: The hash value of the given key.
+    int hash(const T1& key) const;
 };
 
 #include "table.cpp"
