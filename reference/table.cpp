@@ -162,13 +162,41 @@ T2& MyTable<T1, T2>::operator[](const T1& key)
     // that this hash table uses is key % BUCKETS.
     int hashValue = key % BUCKETS;
 
-    // Locate the bucket and the value that is mapped to the given key.
+    // Locate the bucket based on the hash value. If the bucket is not empty,
+    // travers through the nodes in the bucket to retrieve the value that is
+    // mapped to the given key.
     if (buckets[hashValue] != nullptr)
     {
-        Node* current =
+        Node* current = buckets[hashValue];
+        if (current -> key == key)
+        {
+            return current -> value;
+        }
+        while (current -> next != nullptr)
+        {
+            current = current -> next;
+            if (current -> key == key)
+            {
+                return current -> value;
+            }
+        }
+
+        // If this line of the code is reached, the pointer current points to
+        // the last node in the bucket, and the given key is not mapped to a
+        // value. Map the given key to a value and add this key-value pair to
+        // this hash table.
+        Node* newNode = new Node();
+        newNode -> key = key;
+        current -> next = newNode;
+        return newNode -> value;
     }
+    // If the bucket is empty, the given key is not mapped to a value. Map the
+    // given key to a value and add this key-value pair to this hash table.
     else
     {
-
+        Node* newNode = new Node();
+        newNode -> key = key;
+        buckets[hashValue] = newNode;
+        return newNode -> value;
     }
-}
+} // end of the method operator[]
