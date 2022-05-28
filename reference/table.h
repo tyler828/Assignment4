@@ -18,6 +18,10 @@ public:
     // ------------------------------Default Constructor---------------------------
     // Description: The default constructor creates an empty hash table.
     //
+    // Pre: As for the data type of the keys of a hash table, the specified data
+    // type (T1) must be first-class. That is, the keys must support mathematical
+    // operators.
+    //
     // Post: An empty hash table exists. Specifically, each bucket of this hash
     // table stores a null pointer.
     MyTable();
@@ -67,6 +71,20 @@ public:
     //
     // Return: A reference to a value in this hash table.
     T2& operator[](const T1& key);
+
+    // -----------------------------------remove-----------------------------------
+    // Description: The method remove deletes the given key and the value that is
+    // mapped to the given key from this hash table.
+    //
+    // Pre: The given key should be mapped to a value in this hash table, and the
+    // given key must match the data type that was specified.
+    //
+    // Post: This method removed the given key and the value that is mapped to it
+    // from this hash table. If the given key is not mapped to a value, this method
+    // does nothing.
+    //
+    // Param: key, the key of the key-value pair to remove.
+    void remove(const T1& key);
 
 private:
     // My table uses open hashing. The Node struct represents a node in a

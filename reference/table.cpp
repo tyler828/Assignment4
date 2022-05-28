@@ -11,6 +11,10 @@
 // ------------------------------Default Constructor---------------------------
 // Description: The default constructor creates an empty hash table.
 //
+// Pre: As for the data type of the keys of a hash table, the specified data
+// type (T1) must be first-class. That is, the keys must support mathematical
+// operators.
+//
 // Post: An empty hash table exists. Specifically, each bucket of this hash
 // table stores a null pointer.
 template <class T1, class T2>
@@ -198,6 +202,57 @@ T2& MyTable<T1, T2>::operator[](const T1& key)
         return newNode -> value;
     }
 } // end of the method operator[]
+
+// -----------------------------------remove-----------------------------------
+// Description: The method remove deletes the given key and the value that is
+// mapped to the given key from this hash table.
+//
+// Pre: The given key should be mapped to a value in this hash table, and the
+// given key must match the data type that was specified.
+//
+// Post: This method removed the given key and the value that is mapped to it
+// from this hash table. If the given key is not mapped to a value, this method
+// does nothing.
+//
+// Param: key, the key of the key-value pair to remove.
+template <class T1, class T2>
+void MyTable<T1, T2>::remove(const T1& key)
+{
+    // Compute the hash value based on the hash function. The hash function
+    // that this hash table uses is key % BUCKETS.
+    int hashValue = hash(key);
+
+    // Locate the bucket based on the hash value. If the bucket is not empty,
+    // locate the value that is mapped to the given key and remove that value.
+    if (buckets[hashValue] != nullptr)
+    {
+        if (buckets[hashValue] -> key == key)
+        {
+            Node* temp = buckets[hashValue];
+            buckets[hashValue] = buckets[hashValue] -> next;
+            delete temp;
+        }
+        else
+        {
+            Node* current = buckets[hashValue];
+            bool removed = false;
+            while (!removed && current -> next != nullptr)
+            {
+                if (current -> next -> key == key)
+                {
+                    Node* temp = current -> next;
+                    current -> next = current -> next -> next;
+                    delete temp;
+                    removed = true;
+                }
+                else
+                {
+                    current = current -> next;
+                }
+            }
+        }
+    }
+} // end of the method remove
 
 // -------------------------------------hash-----------------------------------
 // Description:The method hash computes the hash value with the given key.
