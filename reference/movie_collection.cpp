@@ -73,7 +73,7 @@ void MovieCollection::emptyHelper(Node* root)
 // Description: The method insert adds the specified movie into this movie
 // collection.
 //
-// Pre: The specified movie and the movies in this movie collection must be of
+// Pre: The specified movie and the movies in this movie collection must be in
 // the same category.
 //
 // Post: This method added the specified movie to this movie collection. The
@@ -129,3 +129,66 @@ void MovieCollection::insertHelper(Node*& root, Movie* movie)
         root -> nodeMovie -> stock += movie -> stock;
     }
 } // end of the method insertHelper
+
+// ----------------------------------retrieve-----------------------------------
+// Description: The method retrieve searches this movie collection for the
+// specified movie.
+//
+// Pre: The specified movie and the movies in this movie collection must be in
+// the same category.
+//
+// Post: This movie collection does not change.
+//
+// Param: target, the movie to retrieve.
+//
+// Return: A pointer to the specified movie if the specified movie is retrieved
+// from this movie collection; a null pointer otherwise.
+Movie* MovieCollection::retrieve(const Movie& target) const
+{
+    return retrieveHelper(root, target);
+} // end of the method retrieve
+
+// -------------------------------retrieveHelper-------------------------------
+// Description: The method retrieveHelper is the helper method of the method
+// retrieve, searching the subtree whose root node is the given node for the
+// specified movie.
+//
+// Pre: The given node should be a node of the binary search tree that contains
+// the movie objects of this movie collection. The specified movie and the
+// movies in this movie collection must be in the same category.
+//
+// Post: This subtree does not change.
+//
+// Param: root, the root node of the subtree to search.
+//
+// Param: target, the movie to retrieve.
+//
+// Return: A pointer to the specified movie if the specified movie is retrieved
+// from this subtree; a null pointer otherwise.
+Movie* MovieCollection::retrieveHelper(Node* root, const Movie& target) const
+{
+    // If the given node is a null pointer, return a null pointer since the
+    // specified movie does not exist in this subtree.
+    if (root == nullptr)
+    {
+        return nullptr;
+    }
+    // If the movie in the given node is greater than the specified movie,
+    // retrieve the specified movie from the left subtree.
+    else if (*(root -> nodeMovie) > target)
+    {
+        return retrieveHelper(root -> left, target);
+    }
+    // If the movie in the given node is smaller than the specified movie,
+    // retrieve the specified movie from the right subtree.
+    else if (*(root -> nodeMovie) < target)
+    {
+        return retrieveHelper(root -> right, target);
+    }
+    // If the movie in the given node is the same as the specified movie,
+    // return the pointer to the movie in the given node.
+    else
+    {
+        return root -> nodeMovie;
+    }
+} // end of the method retrieveHelper

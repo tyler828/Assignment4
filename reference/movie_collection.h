@@ -46,7 +46,7 @@ public:
     // Description: The method insert adds the specified movie into this movie
     // collection.
     //
-    // Pre: The specified movie and the movies in this movie collection must be of
+    // Pre: The specified movie and the movies in this movie collection must be in
     // the same category.
     //
     // Post: This method added the specified movie to this movie collection. The
@@ -60,7 +60,7 @@ public:
     // Description: The method retrieve searches this movie collection for the
     // specified movie.
     //
-    // Pre: The specified movie and the movies in this movie collection must be of
+    // Pre: The specified movie and the movies in this movie collection must be in
     // the same category.
     //
     // Post: This movie collection does not change.
@@ -125,4 +125,23 @@ private:
     //
     // Param: movie, the movie to insert.
     void insertHelper(Node*& root, Movie* movie);
+
+    // -------------------------------retrieveHelper-------------------------------
+    // Description: The method retrieveHelper is the helper method of the method
+    // retrieve, searching the subtree whose root node is the given node for the
+    // specified movie.
+    //
+    // Pre: The given node should be a node of the binary search tree that contains
+    // the movie objects of this movie collection. The specified movie and the
+    // movies in this movie collection must be in the same category.
+    //
+    // Post: This subtree does not change.
+    //
+    // Param: root, the root node of the subtree to search.
+    //
+    // Param: target, the movie to retrieve.
+    //
+    // Return: A pointer to the specified movie if the specified movie is retrieved
+    // from this subtree; a null pointer otherwise.
+    Movie* retrieveHelper(Node* root, const Movie& target) const;
 };
