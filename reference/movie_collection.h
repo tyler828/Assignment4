@@ -26,11 +26,21 @@ public:
 
     // ---------------------------------Destructor---------------------------------
     // Description: The destructor deletes this movie collection, freeing all the
-    // memory that was dynamically allocated to this movie collection.
+    // memory that was dynamically allocated to this movie collection (and its
+    // movie objects).
     //
     // Post: This movie collection does not exist, and the dynamically allocated
     // memory is free.
     ~MovieCollection();
+
+    // ------------------------------------empty-----------------------------------
+    // Description: The method empty deletes all the movies in this movie
+    // collection, freeing all the memory that was dynamically allocated to this
+    // movie collection (and the movie objects).
+    //
+    // Post: This movie collection is empty. The dynamically allocated memory is
+    // free.
+    void empty();
 
     // -----------------------------------insert-----------------------------------
     // Description: The method insert adds the specified movie into this movie
@@ -87,4 +97,16 @@ private:
     // The pointer to the root of the binary search tree that contains a certain
     // category of movie.
     Node* root;
+
+    // ----------------------------------emptyHelper-------------------------------
+    // Description: The method emptyHelper is the helper method of the method
+    // empty, deleting the subtree whose root node is the given node.
+    //
+    // Pre: The given node is a node of the binary search tree that contains the
+    // movie objects of this movie collection.
+    //
+    // Post: This method deleted the subtree whose root node is the given node.
+    //
+    // Param: root, the root node of the subtree to delete.
+    void emptyHelper(Node* root);
 };
