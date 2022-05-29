@@ -51,8 +51,8 @@ void MovieCollection::empty()
 // Description: The method emptyHelper is the helper method of the method
 // empty, deleting the subtree whose root node is the given node.
 //
-// Pre: The given node is a node of the binary search tree that contains the
-// movie objects of this movie collection.
+// Pre: The given node should be a node of the binary search tree that contains
+// the movie objects of this movie collection.
 //
 // Post: This method deleted the subtree whose root node is the given node.
 //
@@ -68,3 +68,63 @@ void MovieCollection::emptyHelper(Node* root)
         delete root;
     }
 } // end of the method emptyHelper
+
+// -----------------------------------insert-----------------------------------
+// Description: The method insert adds the specified movie into this movie
+// collection.
+//
+// Pre: The specified movie and the movies in this movie collection must be of
+// the same category.
+//
+// Post: This method added the specified movie to this movie collection. The
+// binary search tree, the data structure of this movie collection, maintains
+// the properties of a binary search tree.
+//
+// Param: movie, the movie to insert.
+void MovieCollection::insert(Movie* movie)
+{
+
+}
+
+// --------------------------------insertHelper--------------------------------
+// Description: The method insertHelper is the helper method of the method
+// insert, adding the given movie to the subtree whose root node is the given
+// node.
+//
+// Pre: The given node should be a node of the binary search tree that contains
+// the movie objects of this movie collection.
+//
+// Post: This method added the given movie to the subtree whose root node is
+// the given node.
+//
+// Param: root, the root node of the subtree.
+//
+// Param: movie, the movie to insert.
+void MovieCollection::insertHelper(Node*& root, Movie* movie)
+{
+    // If the given node is a null pointer, replace the null pointer with a new
+    // node that contains the given movie.
+    if (root == nullptr)
+    {
+        root = new Node();
+        root -> nodeMovie = movie;
+    }
+    // If the movie in the given node is greater than the given movie, add the
+    // given movie to the left subtree.
+    else if (*(root -> nodeMovie) > *movie)
+    {
+        insertHelper(root -> left, movie);
+    }
+    // If the movie in the given node is smaller than the given movie, add the
+    // given movie to the right subtree.
+    else if (*(root -> nodeMovie) < *movie)
+    {
+        insertHelper(root -> right, movie);
+    }
+    // If the movie in the given node is the same as the given movie, update the
+    // stock of this movie.
+    else
+    {
+        root -> nodeMovie -> max += movie -> max;
+    }
+}

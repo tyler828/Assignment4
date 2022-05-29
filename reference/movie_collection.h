@@ -102,11 +102,27 @@ private:
     // Description: The method emptyHelper is the helper method of the method
     // empty, deleting the subtree whose root node is the given node.
     //
-    // Pre: The given node is a node of the binary search tree that contains the
-    // movie objects of this movie collection.
+    // Pre: The given node should be a node of the binary search tree that contains
+    // the movie objects of this movie collection.
     //
     // Post: This method deleted the subtree whose root node is the given node.
     //
     // Param: root, the root node of the subtree to delete.
     void emptyHelper(Node* root);
+
+    // --------------------------------insertHelper--------------------------------
+    // Description: The method insertHelper is the helper method of the method
+    // insert, adding the given movie to the subtree whose root node is the given
+    // node.
+    //
+    // Pre: The given node should be a node of the binary search tree that contains
+    // the movie objects of this movie collection.
+    //
+    // Post: This method added the given movie to the subtree whose root node is
+    // the given node.
+    //
+    // Param: root, the root node of the subtree.
+    //
+    // Param: movie, the movie to insert.
+    void insertHelper(Node*& root, Movie* movie);
 };

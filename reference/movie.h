@@ -95,4 +95,6 @@ protected:
     int stock;
 
     friend class DVD;
+
+    friend class MovieCollection;
 };
