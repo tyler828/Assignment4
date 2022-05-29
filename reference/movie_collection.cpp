@@ -83,8 +83,8 @@ void MovieCollection::emptyHelper(Node* root)
 // Param: movie, the movie to insert.
 void MovieCollection::insert(Movie* movie)
 {
-
-}
+    insertHelper(root, movie);
+} // end of the method insert
 
 // --------------------------------insertHelper--------------------------------
 // Description: The method insertHelper is the helper method of the method
@@ -126,5 +126,6 @@ void MovieCollection::insertHelper(Node*& root, Movie* movie)
     else
     {
         root -> nodeMovie -> max += movie -> max;
+        root -> nodeMovie -> stock += movie -> stock;
     }
-}
+} // end of the method insertHelper
