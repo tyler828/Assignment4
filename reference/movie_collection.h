@@ -144,4 +144,18 @@ private:
     // Return: A pointer to the specified movie if the specified movie is retrieved
     // from this subtree; a null pointer otherwise.
     Movie* retrieveHelper(Node* root, const Movie& target) const;
+
+    // --------------------------------inOrderHelper-------------------------------
+    // Description: The method inOrderHelper is the helper method of the method
+    // inOrderTraversal, displaying each of the movies in the subtree whose root
+    // node is the given node with an in-order traversal.
+    //
+    // Pre: The given node should be a node of the binary search tree that contains
+    // the movie objects of this movie collection.
+    //
+    // Post: This method displayed each of the movies in the subtree whose root
+    // node is the given node through the console. This subtree does not change.
+    //
+    // Param: root, the root node of the subtree to traverse.
+    void inOrderHelper(Node* root) const;
 };

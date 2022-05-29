@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "movie_collection.h"
 
 // --------------------------- movie_collection.cpp ---------------------------
@@ -192,3 +194,38 @@ Movie* MovieCollection::retrieveHelper(Node* root, const Movie& target) const
         return root -> nodeMovie;
     }
 } // end of the method retrieveHelper
+
+// ------------------------------inOrderTraversal------------------------------
+// Description: The method inOrderTraversal displays the movies in this movie
+// collection with an in-order traversal.
+//
+// Post: This method displayed each of the movies in this movie collection
+// through the console. This movie collection does not change.
+void MovieCollection::inOrderTraversal() const
+{
+    inOrderHelper(root);
+} // end of the method inOrderTraversal
+
+// --------------------------------inOrderHelper-------------------------------
+// Description: The method inOrderHelper is the helper method of the method
+// inOrderTraversal, displaying each of the movies in the subtree whose root
+// node is the given node with an in-order traversal.
+//
+// Pre: The given node should be a node of the binary search tree that contains
+// the movie objects of this movie collection.
+//
+// Post: This method displayed each of the movies in the subtree whose root
+// node is the given node through the console. This subtree does not change.
+//
+// Param: root, the root node of the subtree to traverse.
+void MovieCollection::inOrderHelper(Node* root) const
+{
+    // Note: This need to be adjusted for the format of the output.
+
+    if (root != nullptr)
+    {
+        inOrderHelper(root -> left);
+        std::cout << (root -> nodeMovie) << std::endl;
+        inOrderHelper(root -> right);
+    }
+} // end of the method inOrderHelper
