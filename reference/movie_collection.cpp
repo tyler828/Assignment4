@@ -83,9 +83,13 @@ void MovieCollection::emptyHelper(Node* root)
 // the properties of a binary search tree.
 //
 // Param: movie, the movie to insert.
-void MovieCollection::insert(Movie* movie)
+//
+// Return: True if a new node is inserted into this movie collection for the
+// specified movie; false if the specified movie already exits in this movie
+// collection and a new node is not inserted.
+bool MovieCollection::insert(Movie* movie)
 {
-    insertHelper(root, movie);
+    return insertHelper(root, movie);
 } // end of the method insert
 
 // --------------------------------insertHelper--------------------------------
@@ -102,7 +106,11 @@ void MovieCollection::insert(Movie* movie)
 // Param: root, the root node of the subtree.
 //
 // Param: movie, the movie to insert.
-void MovieCollection::insertHelper(Node*& root, Movie* movie)
+//
+// Return: True if a new node is inserted into this subtree for the specified
+// movie; false if the specified movie already exits in this subtree and a new
+// node is not inserted.
+bool MovieCollection::insertHelper(Node*& root, Movie* movie)
 {
     // If the given node is a null pointer, replace the null pointer with a new
     // node that contains the given movie.
@@ -110,18 +118,19 @@ void MovieCollection::insertHelper(Node*& root, Movie* movie)
     {
         root = new Node();
         root -> nodeMovie = movie;
+        return true;
     }
     // If the movie in the given node is greater than the given movie, add the
     // given movie to the left subtree.
     else if (*(root -> nodeMovie) > *movie)
     {
-        insertHelper(root -> left, movie);
+        return insertHelper(root -> left, movie);
     }
     // If the movie in the given node is smaller than the given movie, add the
     // given movie to the right subtree.
     else if (*(root -> nodeMovie) < *movie)
     {
-        insertHelper(root -> right, movie);
+        return insertHelper(root -> right, movie);
     }
     // If the movie in the given node is the same as the given movie, update the
     // stock of this movie.
@@ -129,6 +138,7 @@ void MovieCollection::insertHelper(Node*& root, Movie* movie)
     {
         root -> nodeMovie -> max += movie -> max;
         root -> nodeMovie -> stock += movie -> stock;
+        return false;
     }
 } // end of the method insertHelper
 
