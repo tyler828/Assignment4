@@ -54,7 +54,11 @@ public:
     // the properties of a binary search tree.
     //
     // Param: movie, the movie to insert.
-    void insert(Movie* movie);
+    //
+    // Return: True if a new node is inserted into this movie collection for the
+    // specified movie; false if the specified movie already exits in this movie
+    // collection and a new node is not inserted.
+    bool insert(Movie* movie);
 
     // ----------------------------------retrieve-----------------------------------
     // Description: The method retrieve searches this movie collection for the
@@ -124,7 +128,11 @@ private:
     // Param: root, the root node of the subtree.
     //
     // Param: movie, the movie to insert.
-    void insertHelper(Node*& root, Movie* movie);
+    //
+    // Return: True if a new node is inserted into this subtree for the specified
+    // movie; false if the specified movie already exits in this subtree and a new
+    // node is not inserted.
+    bool insertHelper(Node*& root, Movie* movie);
 
     // -------------------------------retrieveHelper-------------------------------
     // Description: The method retrieveHelper is the helper method of the method
