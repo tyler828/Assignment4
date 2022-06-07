@@ -2,11 +2,9 @@
 #include <iomanip>
 #include "drama.h"
 
-Drama::Drama(std::string title, std::string director, std::string releaseYear, int max) {
-	this->title = title;
-	this->director = director;
-	this->releaseYear = releaseYear;
-	this->max = max;
+Drama::Drama(std::string title, std::string director, std::string releaseYear, int max) :
+Movie(title, director, releaseYear, max) {
+
 }
 
 bool Drama::operator<(Drama& rhs) const {
@@ -37,15 +35,16 @@ bool Drama::operator>(Drama& rhs) const {
 	return false;
 }
 
-std::string Drama::getDirector() {
-	return director;
+std::string Drama::getDirector() const {
+	return this->director;
 
 }
 
-std::string Drama::getTitle() {
-	return title;
+std::string Drama::getTitle() const {
+	return this->title;
 }
 
-friend std::ostream& Drama::operator<<(std::ostream& output, const Drama& rhs) {
-	cout << "Director: " << Drama::getDirector() << " Title: " << Drama::getTitle() << endl;
+std::ostream& operator<<(std::ostream& output, const Drama& rhs) {
+	std::cout << "Director: " << rhs.getDirector()
+              << " Title: " << rhs.getTitle() << std::endl;
 }

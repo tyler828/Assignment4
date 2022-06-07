@@ -85,6 +85,10 @@ public:
     //
     // Return: A reference to the ostream object.
     friend std::ostream& operator<<(std::ostream& output, const Drama& rhs);
+
+    std::string getDirector() const;
+
+    std::string getTitle() const;
 private:
 
 };

@@ -4,7 +4,7 @@
 #include "movie.h"
 
 // -------------------------------- drama.h ----------------------------------
-// Programmer Name: Team C--     Course Section Number: CSS 343 B
+// Programmer Name: Austin Schnarre    Course Section Number: CSS 343 B
 // Creation Date: 5/23/2022
 // Date of Last Modification:
 //
@@ -18,16 +18,12 @@ class Drama : public Movie
 {
 public:
     Drama(std::string title, std::string director, std::string releaseYear, int max);
-
     bool operator<(Drama& rhs) const;
-
     bool operator>(Drama& rhs) const;
-    
     friend std::ostream& operator<<(std::ostream& output, const Drama& rhs);
 
-    std::string getDirector();
-
-    std::string getTitle();
+    std::string getDirector() const;
+    std::string getTitle() const;
 private:
    
 };
