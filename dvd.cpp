@@ -80,11 +80,10 @@ bool DVD::addItem(std::string movieToAdd)
                 int key = std::stoi(year) + std::stoi(month);       //create key using month and year
                 movieTable.insert(key, movie);
             }
-            else
+            else    //do nothing.  BST updates stock of movie
             {
                 delete movie;
             }
-            //else, do nothing.  BST updates stock of movie
 
         case('F') : //comedy
             year = movieToAdd; //set year
@@ -103,6 +102,7 @@ bool DVD::addItem(std::string movieToAdd)
             int key = std::stoi(year);
             orderedCollection['D'].insert(movie);       //insert movie into Drama BST
             movieTable.insert(key, movie);
+            
         default:
             std::cout << "Invalid movie category" << std::endl;
     }

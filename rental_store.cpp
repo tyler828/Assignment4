@@ -24,18 +24,18 @@ RentalStore::RentalStore()
 void RentalStore::initializeInventory(std::ifstream& input)
 {
     DVD* dvdCollection = new DVD;       //create DVD object
-    mediaTable.insert('D', *dvdCollection);     //insert into mediaTable (only type of media in table for this project)
+    mediaTable.insert('D', dvdCollection);     //insert into mediaTable (only type of media in table for this project)
 
     std::string line;
     getline(input, line);
 
-    if(line.empty()) //empty final line
-    {
-        return;
-    }
-
     while(!input.eof())     //not end of file
     {
+        if(line.empty())        //empty final line
+        {
+            return;
+        }
+
         dvdCollection->addItem(line);  //send line to be parsed by dvdCollection
         getline(input, line);           //get next line
     }
@@ -45,34 +45,46 @@ void RentalStore::initializeInventory(std::ifstream& input)
 void RentalStore::addCustomers(std::ifstream& input)
 {
     std::string line;
+    std::string ID;
     getline(input, line);
-
-    if(line.empty()) //empty final line
-    {
-        return;
-    }
 
     while(!input.eof())     //not end of file
     {
+        if(line.empty()) //empty final line
+        {
+            return;
+        }
 
         //create customer object, initialize it's attributes
-        //send customer object ot custemerTable with key of its key
+        int ID = std::stoi(line.substr(0, line.find(" ")));     //extract ID
+        line = line.substr(line.find(" ") + 1);                 //remove ID, leaving name only
+
+        Customer* customer = new Customer(line);    
+        customerTable.insert(ID, customer);         //insert object into hash table
+
+        //send customer object ot customerTable with key of its key
         getline(input, line);           //get next line
     }
-    // Pseudo Code
-    //
-    // for each line in the input file
-    // {
-    //     Parse the line for the ID and the name of the customer.
-    //     Create a customer object that contains the name of the customer.
-    //     Add this customer object to the customer table and map this
-    //     customer object to the ID of this customer.
-    // }
-    
 }
 
 void RentalStore::processCommands(std::ifstream& input)
 {
+    std::string line;
+    getline(input, line);
+
+    while(!input.eof())     //not end of file
+    {
+        if(line.empty())        //empty final line
+        {
+            return;
+        }
+
+        //parse logic
+
+        //switch statement
+
+        getline(input, line);           //get next line
+    }
     // Pseudo Code
     //
     // for each line in the input file

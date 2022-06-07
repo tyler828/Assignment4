@@ -37,7 +37,7 @@ public:
     void processCommands(std::ifstream& input);
 
 private:
-    MyTable<char, Media> mediaTable;
+    MyTable<char, Media*> mediaTable;
     
-    MyTable<int, Customer> customerTable;
+    MyTable<int, Customer*> customerTable;
 };
