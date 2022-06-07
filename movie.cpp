@@ -7,3 +7,13 @@ Movie::Movie(std::string title, std::string director, std::string releaseYear, i
 	this->max = max;
 
 }
+
+bool Movie::operator<(const Movie& rhs) const
+{
+    return this->stock < rhs.stock;
+}
+
+bool Movie::operator>(const Movie& rhs) const
+{
+    return this->stock > rhs.stock;
+}
