@@ -3,7 +3,7 @@
 #include <string>
 
 // --------------------------------- movie.h ----------------------------------
-// Programmer Name: Team C--     Course Section Number: CSS 343 B
+// Programmer Name: Austin Schnarre     Course Section Number: CSS 343 B
 // Creation Date: 5/19/2022
 // Date of Last Modification:
 //
@@ -74,11 +74,14 @@ public:
     // Param: rhs, which is the movie to display.
     //
     // Return: A reference to the ostream object.
-    friend std::ostream& operator<<(std::ostream& output, const Movie& rhs);
+    // friend std::ostream& operator<<(std::ostream& output, const Movie& rhs);
 
 private:
 
 protected:
+    // The genre of this movie.
+    char genre;
+
     // The title of this movie.
     std::string title;
 
