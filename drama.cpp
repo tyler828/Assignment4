@@ -7,7 +7,7 @@ Movie(title, director, releaseYear, max) {
 
 }
 
-bool Drama::operator<(Drama& rhs) const {
+bool Drama::operator<(const Drama& rhs) const {
 	if (this->director < rhs.director) {
 		return true;
 	}
@@ -21,7 +21,7 @@ bool Drama::operator<(Drama& rhs) const {
 	return false;
 }
 
-bool Drama::operator>(Drama& rhs) const {
+bool Drama::operator>(const Drama& rhs) const {
 	if (this->director > rhs.director) {
 		return true;
 	}
@@ -45,6 +45,7 @@ std::string Drama::getTitle() const {
 }
 
 std::ostream& operator<<(std::ostream& output, const Drama& rhs) {
-	std::cout << "Director: " << rhs.getDirector()
-              << " Title: " << rhs.getTitle() << std::endl;
+	output << "Director: " << rhs.getDirector()
+           << " Title: " << rhs.getTitle() << std::endl;
+    return output;
 }

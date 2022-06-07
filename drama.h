@@ -18,8 +18,8 @@ class Drama : public Movie
 {
 public:
     Drama(std::string title, std::string director, std::string releaseYear, int max);
-    bool operator<(Drama& rhs) const;
-    bool operator>(Drama& rhs) const;
+    bool operator<(const Drama& rhs) const;
+    bool operator>(const Drama& rhs) const;
     friend std::ostream& operator<<(std::ostream& output, const Drama& rhs);
 
     std::string getDirector() const;

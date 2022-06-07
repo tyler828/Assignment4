@@ -52,7 +52,7 @@ public:
     // these two drama movies have the same director but the title of this drama
     // movie comes before the title of the drama movie on the right-hand side
     // with an alphabetical order. This method returns false otherwise.
-    bool operator<(Drama& rhs) const;
+    bool operator<(const Drama& rhs) const;
 
     // ---------------------------------operator>----------------------------------
     // Description: The method operator> overloads the operator >, comparing this
@@ -70,7 +70,7 @@ public:
     // these two drama movies have the same director but the title of this drama
     // movie comes after the title of the drama movie on the right-hand side
     // with an alphabetical order. This method returns false otherwise.
-    bool operator>(Drama& rhs) const;
+    bool operator>(const Drama& rhs) const;
 
     // ---------------------------------operator<<----------------------------------
     // Description: The method operator<< overloads the operator <<, displaying the
