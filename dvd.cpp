@@ -18,21 +18,13 @@ DVD::DVD()
 {
     //create the three collections, insert them into hash table
     MovieCollection* Classic = new MovieCollection;
-    orderedCollection.insert('C', *Classic);
+    orderedCollection.insert('C', Classic);
 
     MovieCollection* Comedy = new MovieCollection;
-    orderedCollection.insert('F', *Comedy);
+    orderedCollection.insert('F', Comedy);
 
     MovieCollection* Drama = new MovieCollection;
-    orderedCollection.insert('D', *Drama);
-}
-
-DVD::~DVD()
-{
-    //must delete collections manually from hash table as the hashtable destructor only deletes its own nodes
-    delete &(orderedCollection['C']);
-    delete &(orderedCollection['D']);
-    delete &(orderedCollection['F']);
+    orderedCollection.insert('D', Drama);
 }
 
 bool DVD::addItem(std::string movieToAdd)
@@ -102,7 +94,7 @@ bool DVD::addItem(std::string movieToAdd)
             int key = std::stoi(year);
             orderedCollection['D'].insert(movie);       //insert movie into Drama BST
             movieTable.insert(key, movie);
-            
+
         default:
             std::cout << "Invalid movie category" << std::endl;
     }
