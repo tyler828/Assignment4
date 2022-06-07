@@ -2,6 +2,7 @@
 #include "movie.h"
 #include "drama.h"
 #include "comedy.h"
+#include "classic.h"
 
 int main()
 {
@@ -20,5 +21,12 @@ int main()
     std::cout << (c1 < c2) << std::endl;
     std::cout << c1 << std::endl;
     std::cout << c2 << std::endl;
+
+    Classic o1("Metropolis", "Fritz Lang", "1927", "1", "Alfred Abel", 20);
+    Classic o2("The Adventures of Robin Hood", "Michael Curtiz", "1938", "5", "Errol Flynn", 20);
+    std::cout << (o1 > o2) << std::endl;
+    std::cout << (o1 < o2) << std::endl;
+    std::cout << o1 << std::endl;
+    std::cout << o2 << std::endl;
     return 0;
 }

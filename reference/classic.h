@@ -4,7 +4,7 @@
 #include "movie.h"
 
 // -------------------------------- classic.h ----------------------------------
-// Programmer Name: Team C--     Course Section Number: CSS 343 B
+// Programmer Name: Austin Schnarre     Course Section Number: CSS 343 B
 // Creation Date: 5/23/2022
 // Date of Last Modification:
 //
@@ -41,7 +41,7 @@ public:
     //
     // Param: max, the maximum stock of the movie.
     Classic(std::string title, std::string director,
-            std::string releaseYear, std::string releaseMonth, std::string actor, int max);
+            std::string releaseYear, std::string releaseMonth, std::string actorName, int max);
 
     // ---------------------------------operator<----------------------------------
     // Description: The method operator< overloads the operator <, comparing this
@@ -59,7 +59,7 @@ public:
     // major actor of this classic movie comes before the name of the major actor
     // of the classic movie on the right-hand side with an alphabetical order. This
     // method returns false otherwise.
-    bool operator<(Classic& rhs) const;
+    bool operator<(const Classic& rhs) const;
 
     // ---------------------------------operator>----------------------------------
     // Description: The method operator> overloads the operator >, comparing this
@@ -77,7 +77,7 @@ public:
     // major actor of this classic movie comes after the name of the major actor
     // of the classic movie on the right-hand side with an alphabetical order. This
     // method returns false otherwise.
-    bool operator>(Classic& rhs) const;
+    bool operator>(const Classic& rhs) const;
 
     // ---------------------------------operator<<----------------------------------
     // Description: The method operator<< overloads the operator <<, displaying the
@@ -93,10 +93,16 @@ public:
     // Return: A reference to the ostream object.
     friend std::ostream& operator<<(std::ostream& output, const Classic& rhs);
 
+    std::string getYear() const;
+
+    std::string getReleaseMoth() const;
+
+    std::string getMajorActor() const;
+
 private:
     // The name of the major actor; the name should include the first name and
     // the last name, separated by a white space.
-    std::string actor;
+    std::string actorName;
 
     // The month when this movie was released.
     std::string releaseMonth;
