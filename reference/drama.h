@@ -4,7 +4,7 @@
 #include "movie.h"
 
 // -------------------------------- drama.h ----------------------------------
-// Programmer Name: Team C--     Course Section Number: CSS 343 B
+// Programmer Name: Austin Schnarre   Course Section Number: CSS 343 B
 // Creation Date: 5/23/2022
 // Date of Last Modification:
 //

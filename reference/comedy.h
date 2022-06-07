@@ -4,7 +4,7 @@
 #include "movie.h"
 
 // -------------------------------- comedy.h ----------------------------------
-// Programmer Name: Team C--     Course Section Number: CSS 343 B
+// Programmer Name: Austin Edward Schnarre     Course Section Number: CSS 343 B
 // Creation Date: 5/19/2022
 // Date of Last Modification:
 //
@@ -83,6 +83,9 @@ public:
     //
     // Return: A reference to the ostream object.
     friend std::ostream& operator<<(std::ostream& output, const Comedy& rhs);
+
+    std::string getYear() const;
+    std::string getTitle() const;
 private:
 
 };

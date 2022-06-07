@@ -3,15 +3,12 @@
 #include "comedy.h"
 
 
-Comedy::Comedy(std::string title, std::string director, std::string releaseYear, int max) {
-	this->title = title;
-	this->director = director;
-	this->releaseYear = releaseYear;
-	this->max = max;
+Comedy::Comedy(std::string title, std::string director, std::string releaseYear, int max) :
+Movie(title, director, releaseYear, max) {
 
 }
 
-bool Comedy::operator<(Comedy& rhs) const {
+bool Comedy::operator<(const Comedy& rhs) const {
 	if (this->title < rhs.title) {
 		return true;
 	}
@@ -26,7 +23,7 @@ bool Comedy::operator<(Comedy& rhs) const {
 
 }
 
-bool Comedy::operator>(Comedy& rhs) const {
+bool Comedy::operator>(const Comedy& rhs) const {
 	if (this->title > rhs.title) {
 		return true;
 	}
@@ -41,17 +38,16 @@ bool Comedy::operator>(Comedy& rhs) const {
 
 }
 
-
-
-std::string Comedy::getTitle() {
+std::string Comedy::getTitle() const {
 	return title;
 }
 
-std::string Comedy::getYear() {
+std::string Comedy::getYear() const {
 	return releaseYear;
 }
 
-friend std::ostream& Comedy::operator<<(std::ostream& output, const Comedy& rhs) {
-	cout << "Title: " << getTitle() << " Year: " << getYear() << endl;
-
+std::ostream& operator<<(std::ostream& output, const Comedy& rhs) {
+	std::cout << "Title: " << rhs.getTitle()
+              << " Year: " << rhs.getYear() << std::endl;
+    return output;
 }

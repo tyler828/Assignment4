@@ -4,7 +4,7 @@
 #include "movie.h"
 
 // -------------------------------- comedy.h ----------------------------------
-// Programmer Name: Team C--     Course Section Number: CSS 343 B
+// Programmer Name: Austin Schnarre     Course Section Number: CSS 343 B
 // Creation Date: 5/19/2022
 // Date of Last Modification:
 //
@@ -18,16 +18,12 @@ class Comedy : public Movie
 {
 public:
     Comedy(std::string title, std::string director, std::string releaseYear, int max);
-
-    bool operator<(Comedy& rhs) const;
-
-    bool operator>(Comedy& rhs) const;
-    
+    bool operator<(const Comedy& rhs) const;
+    bool operator>(const Comedy& rhs) const;
     friend std::ostream& operator<<(std::ostream& output, const Comedy& rhs);
 
-    std::string getYear();
-
-    std::string getTitle();
+    std::string getYear() const;
+    std::string getTitle() const;
 
 private:
 
