@@ -24,6 +24,12 @@ public:
     bool operator>(Classic& rhs) const;
     
     friend std::ostream& operator<<(std::ostream& output, const Classic& rhs);
+
+    std::string getYear();
+
+    std::string getReleaseMoth();
+
+    std::string getMajorActor();
 private:
     std:: string actorName;
     

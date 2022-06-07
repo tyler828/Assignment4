@@ -24,6 +24,11 @@ public:
     bool operator>(Comedy& rhs) const;
     
     friend std::ostream& operator<<(std::ostream& output, const Comedy& rhs);
+
+    std::string getYear();
+
+    std::string getTitle();
+
 private:
 
 };

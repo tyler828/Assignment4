@@ -19,16 +19,18 @@ class Movie
 {
 public:
     Movie(std::string title, std::string director, std::string releaseYear, int max);
-
     virtual bool operator<(Movie& rhs) const;
-
     virtual bool operator>(Movie& rhs) const;
-    
     friend std::ostream& operator<<(std::ostream& output, const Movie& rhs);
 
 private:
 
+
+
 protected:
+
+    char genre;
+
     std::string title;
 
     std::string director;
@@ -40,6 +42,5 @@ protected:
     int stock;
     
     friend class DVD;
-
     friend class MovieCollection;
 };

@@ -24,6 +24,10 @@ public:
     bool operator>(Drama& rhs) const;
     
     friend std::ostream& operator<<(std::ostream& output, const Drama& rhs);
-private:
 
+    std::string getDirector();
+
+    std::string getTitle();
+private:
+   
 };
