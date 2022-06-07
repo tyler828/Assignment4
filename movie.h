@@ -3,7 +3,7 @@
 #include <string>
 
 // --------------------------------- movie.h ----------------------------------
-// Programmer Name: Team C--     Course Section Number: CSS 343 B
+// Programmer Name: Austin Schnarre    Course Section Number: CSS 343 B
 // Creation Date: 5/19/2022
 // Date of Last Modification:
 //
@@ -21,24 +21,17 @@ public:
     Movie(std::string title, std::string director, std::string releaseYear, int max);
     virtual bool operator<(Movie& rhs) const;
     virtual bool operator>(Movie& rhs) const;
-    friend std::ostream& operator<<(std::ostream& output, const Movie& rhs);
 
 private:
 
 
 
 protected:
-
     char genre;
-
     std::string title;
-
     std::string director;
-
     std::string releaseYear;
-
     int max;
-
     int stock;
     
     friend class DVD;
