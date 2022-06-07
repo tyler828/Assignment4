@@ -21,5 +21,37 @@ Movie::Movie(std::string title, std::string director, std::string releaseYear, i
     this->director = director;
     this->releaseYear = releaseYear;
     this->max = max;
+    this->stock = max;
+}
 
+// ---------------------------------operator<----------------------------------
+// Description: The method operator< overloads the operator <, comparing this
+// movie, which is on the left-hand side of the operator <, with the movie
+// object on the right-hand side.
+//
+// Post: These two movie objects do not change.
+//
+// Param: rhs, which is the movie object on the right-hand side.
+//
+// Return: True if this movie is less than the movie on the right-hand side;
+// false otherwise.
+bool Movie::operator<(const Movie& rhs) const
+{
+    return this->stock < rhs.stock;
+}
+
+// ---------------------------------operator>----------------------------------
+// Description: The method operator> overloads the operator >, comparing this
+// movie, which is on the left-hand side of the operator >, with the movie
+// object on the right-hand side.
+//
+// Post: These two movie objects do not change.
+//
+// Param: rhs, which is the movie object on the right-hand side.
+//
+// Return: True if this movie is greater than the movie on the right-hand side;
+// false otherwise.
+bool Movie::operator>(const Movie& rhs) const
+{
+    return this->stock > rhs.stock;
 }
