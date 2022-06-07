@@ -19,8 +19,8 @@ class Movie
 {
 public:
     Movie(std::string title, std::string director, std::string releaseYear, int max);
-    virtual bool operator<(Movie& rhs) const;
-    virtual bool operator>(Movie& rhs) const;
+    virtual bool operator<(Movie& rhs) const = 0;
+    virtual bool operator>(Movie& rhs) const = 0;
 
 private:
 
