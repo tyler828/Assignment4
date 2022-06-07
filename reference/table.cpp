@@ -49,6 +49,7 @@ MyTable<T1, T2>::~MyTable()
             // Delete the first node in the bucket.
             Node* temp = buckets[i];
             buckets[i] = buckets[i] -> next;
+            delete temp -> value;
             delete temp;
             temp = nullptr;
         }
@@ -74,7 +75,7 @@ MyTable<T1, T2>::~MyTable()
 //
 // Param: value, the value of the key.
 template <class T1, class T2>
-void MyTable<T1, T2>::insert(const T1& key, const T2& value)
+void MyTable<T1, T2>::insert(const T1& key, T2* value)
 {
     // Note: This hash table does not support string keys. There are four
     // solutions to this problem:
@@ -112,6 +113,7 @@ void MyTable<T1, T2>::insert(const T1& key, const T2& value)
         // given value.
         if (current -> key == key)
         {
+            delete current -> value;
             current -> value = value;
             duplicate = true;
         }
@@ -121,6 +123,7 @@ void MyTable<T1, T2>::insert(const T1& key, const T2& value)
 
             if (current -> key == key)
             {
+                delete current -> value;
                 current -> value = value;
                 duplicate = true;
             }
@@ -172,14 +175,14 @@ T2& MyTable<T1, T2>::operator[](const T1& key)
         Node* current = buckets[hashValue];
         if (current -> key == key)
         {
-            return current -> value;
+            return *(current -> value);
         }
         while (current -> next != nullptr)
         {
             current = current -> next;
             if (current -> key == key)
             {
-                return current -> value;
+                return *(current -> value);
             }
         }
 
@@ -189,8 +192,9 @@ T2& MyTable<T1, T2>::operator[](const T1& key)
         // this hash table.
         Node* newNode = new Node();
         newNode -> key = key;
+        newNode -> value = new T2();
         current -> next = newNode;
-        return newNode -> value;
+        return *(newNode -> value);
     }
     // If the bucket is empty, the given key is not mapped to a value. Map the
     // given key to a value and add this key-value pair to this hash table.
@@ -198,8 +202,9 @@ T2& MyTable<T1, T2>::operator[](const T1& key)
     {
         Node* newNode = new Node();
         newNode -> key = key;
+        newNode -> value = new T2();
         buckets[hashValue] = newNode;
-        return newNode -> value;
+        return *(newNode -> value);
     }
 } // end of the method operator[]
 
@@ -230,6 +235,7 @@ void MyTable<T1, T2>::remove(const T1& key)
         {
             Node* temp = buckets[hashValue];
             buckets[hashValue] = buckets[hashValue] -> next;
+            delete temp -> value;
             delete temp;
         }
         else
@@ -242,6 +248,7 @@ void MyTable<T1, T2>::remove(const T1& key)
                 {
                     Node* temp = current -> next;
                     current -> next = current -> next -> next;
+                    delete temp -> value;
                     delete temp;
                     removed = true;
                 }

@@ -52,7 +52,7 @@ public:
     // Param: key, the key of the value.
     //
     // Param: value, the value of the key.
-    void insert(const T1& key, const T2& value);
+    void insert(const T1& key, T2* value);
 
     // ----------------------------------operator[]--------------------------------
     // Description: The method operator[] overloads the operator [], allowing
@@ -93,7 +93,7 @@ private:
     {
         Node* next;
         T1 key;
-        T2 value;
+        T2* value;
 
         Node() : next(nullptr)
         {

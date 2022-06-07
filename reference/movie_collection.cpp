@@ -66,7 +66,6 @@ void MovieCollection::emptyHelper(Node* root)
     {
         emptyHelper(root -> left);
         emptyHelper(root -> right);
-        delete root -> nodeMovie;
         delete root;
     }
 } // end of the method emptyHelper
