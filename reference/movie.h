@@ -47,7 +47,7 @@ public:
     //
     // Return: True if this movie is less than the movie on the right-hand side;
     // false otherwise.
-    virtual bool operator<(const Movie& rhs) const = 0;
+    virtual bool operator<(const Movie& rhs) const;
 
     // ---------------------------------operator>----------------------------------
     // Description: The method operator> overloads the operator >, comparing this
@@ -60,7 +60,7 @@ public:
     //
     // Return: True if this movie is greater than the movie on the right-hand side;
     // false otherwise.
-    virtual bool operator>(const Movie& rhs) const = 0;
+    virtual bool operator>(const Movie& rhs) const;
 
     // ---------------------------------operator<<----------------------------------
     // Description: The method operator<< overloads the operator <<, displaying the
