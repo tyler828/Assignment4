@@ -27,6 +27,8 @@ class DVD : public Media
 public:
     DVD();
 
+    ~DVD();
+
     bool addItem(std::string movieToAdd);
 
     bool borrowItem(std::string movieBorrowed);
@@ -36,7 +38,7 @@ public:
     void displayAllItems() const;
 
 private:
-    MyTable<char, MovieCollection> table;
+    MyTable<char, MovieCollection> orderedCollection;
     
-    MyTable<std::string, Movie> movieTable;
+    MyTable<int, Movie*> movieTable;
 };

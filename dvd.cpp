@@ -16,7 +16,23 @@
 
 DVD::DVD()
 {
+    //create the three collections, insert them into hash table
+    MovieCollection* Classic = new MovieCollection;
+    orderedCollection.insert('C', *Classic);
 
+    MovieCollection* Comedy = new MovieCollection;
+    orderedCollection.insert('F', *Comedy);
+
+    MovieCollection* Drama = new MovieCollection;
+    orderedCollection.insert('D', *Drama);
+}
+
+DVD::~DVD()
+{
+    //must delete collections manually from hash table as the hashtable destructor only deletes its own nodes
+    delete &(orderedCollection['C']);
+    delete &(orderedCollection['D']);
+    delete &(orderedCollection['F']);
 }
 
 bool DVD::addItem(std::string movieToAdd)
@@ -36,13 +52,13 @@ bool DVD::addItem(std::string movieToAdd)
     movieType = movieToAdd.substr(0, movieToAdd.find(","));     //extract movie type
     movieToAdd = movieToAdd.substr(movieToAdd.find(",") + 2);   //cut processed attribute out of string
 
-    stock =  std::stoi(movieToAdd.substr(0, movieToAdd.find(","))); //extract stock
+    stock =  std::stoi(movieToAdd.substr(0, movieToAdd.find(",")));     //extract stock
     movieToAdd = movieToAdd.substr(movieToAdd.find(",") + 2);           //cut processed attribute out of string
     
     director = movieToAdd.substr(0, movieToAdd.find(","));     //extract director
     movieToAdd = movieToAdd.substr(movieToAdd.find(",") + 2);   //cut processed attribute out of string
     
-    title = movieToAdd.substr(0, movieToAdd.find(","));     //extract movie type
+    title = movieToAdd.substr(0, movieToAdd.find(","));     //extract movie name
     movieToAdd = movieToAdd.substr(movieToAdd.find(",") + 2);   //cut processed attribute out of string
 
     switch(movieType[0])
@@ -59,43 +75,42 @@ bool DVD::addItem(std::string movieToAdd)
             year = movieToAdd;      //process release year
 
             Classic* movie = new Classic(title, director, year, month, actor, stock);
-            if(table['C'].insert(movie))        //BST insert was successful (movie not already in BST)
+            if(orderedCollection['C'].insert(movie))        //BST insert was successful (movie not already in BST)
             {
                 int key = std::stoi(year) + std::stoi(month);       //create key using month and year
-                movieTable.insert("key", *movie);
+                movieTable.insert(key, movie);
+            }
+            else
+            {
+                delete movie;
             }
             //else, do nothing.  BST updates stock of movie
 
         case('F') : //comedy
-            table['F'].insert(movie);       //insert movie into Coomedy BST
+            year = movieToAdd; //set year
+
+            Comedy* movie = new Comedy(title, director, year, stock);
+
+            int key = std::stoi(year);
+            orderedCollection['F'].insert(movie);       //insert movie into Comedy BST
+            movieTable.insert(key, movie);
 
         case('D') : //drama
-            table['D'].insert(movie);       //insert movie into Drama BST
+            year = movieToAdd; //set year
 
+            Drama* movie = new Drama(title, director, year, stock); //create comedy object
+
+            int key = std::stoi(year);
+            orderedCollection['D'].insert(movie);       //insert movie into Drama BST
+            movieTable.insert(key, movie);
         default:
             std::cout << "Invalid movie category" << std::endl;
-
     }
-
-    // Pseudo Code
-    //
-    // Parse the given string and identify the category of the movie to add.
-    // if the category is F, D, or C
-    // {
-    //     Create a movie object based on the given string.
-    //     Call the insert method on the movie collection that contains this
-    //     category of movie. Pass the movie object as the parameter.
-    //     Return true.
-    // }
-    // else
-    // {
-    //     Display an error message.
-    //     Return false.
-    // }
 }
 
 bool DVD::borrowItem(std::string movieBorrowed)
 {
+
     // Pseudo Code
     //
     // Parse the given string and identify the category of the movie to borrow.
