@@ -1,8 +1,12 @@
 #pragma once
 
 #include <string>
+#include <iostream>
 
 #include "media.h"
+#include "classic.h"
+#include "comedy.h"
+#include "drama.h"
 #include "movie_collection.h"
 #include "table.h"
 

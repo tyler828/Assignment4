@@ -23,18 +23,42 @@ RentalStore::RentalStore()
 
 void RentalStore::initializeInventory(std::ifstream& input)
 {
-    // Pseudo Code
-    //
-    // Add an DVD object to the media table.
-    // for each line in the input file
-    // {
-    //     Call the addItem method on the DVD object. Pass each line to the addItem
-    //     method as a string.
-    // }
+    DVD* dvdCollection = new DVD;       //create DVD object
+    mediaTable.insert('D', *dvdCollection);     //insert into mediaTable (only type of media in table for this project)
+
+    std::string line;
+    getline(input, line);
+
+    if(line.empty()) //empty final line
+    {
+        return;
+    }
+
+    while(!input.eof())     //not end of file
+    {
+        dvdCollection->addItem(line);  //send line to be parsed by dvdCollection
+        getline(input, line);           //get next line
+    }
 }
+
 
 void RentalStore::addCustomers(std::ifstream& input)
 {
+    std::string line;
+    getline(input, line);
+
+    if(line.empty()) //empty final line
+    {
+        return;
+    }
+
+    while(!input.eof())     //not end of file
+    {
+
+        //create customer object, initialize it's attributes
+        //send customer object ot custemerTable with key of its key
+        getline(input, line);           //get next line
+    }
     // Pseudo Code
     //
     // for each line in the input file
@@ -44,6 +68,7 @@ void RentalStore::addCustomers(std::ifstream& input)
     //     Add this customer object to the customer table and map this
     //     customer object to the ID of this customer.
     // }
+    
 }
 
 void RentalStore::processCommands(std::ifstream& input)

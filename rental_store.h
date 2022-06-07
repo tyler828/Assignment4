@@ -1,10 +1,13 @@
 #pragma once
 
 #include <string>
+//#include <iostream>
+#include <fstream>
 
 #include "media.h"
 #include "table.h"
 #include "customer.h"
+#include "dvd.h"
 
 // ------------------------------ rental_store.h ------------------------------
 // Programmer Name: Team C--     Course Section Number: CSS 343 B
@@ -24,6 +27,8 @@ class RentalStore
 {
 public:
     RentalStore();
+    
+    ~RentalStore();
 
     void initializeInventory(std::ifstream& input);
 
