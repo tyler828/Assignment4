@@ -100,7 +100,7 @@ void MyTable<T1, T2>::insert(const T1& key, T2* value)
         // Put the new node into the bucket.
         buckets[hashValue] = newNode;
     }
-    // If the bucket is not empty, traverse through the nodes in the bucket
+    // If the bucket is not empty, travers through the nodes in the bucket
     // before putting the value into the bucket.
     else
     {
@@ -168,7 +168,7 @@ T2& MyTable<T1, T2>::operator[](const T1& key)
     int hashValue = hash(key);
 
     // Locate the bucket based on the hash value. If the bucket is not empty,
-    // traverse through the nodes in the bucket to retrieve the value that is
+    // travers through the nodes in the bucket to retrieve the value that is
     // mapped to the given key.
     if (buckets[hashValue] != nullptr)
     {
