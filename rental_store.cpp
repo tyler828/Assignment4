@@ -75,8 +75,8 @@ void RentalStore::processCommands(std::ifstream& input)
     int customerID;
     std::string mediaType;
 
-    getline(input, line);
-    originalCommand = line;
+    getline(input, originalCommand);
+    line = originalCommand;
 
     while(!input.eof())     //not end of file
     {
@@ -165,7 +165,7 @@ void RentalStore::processCommands(std::ifstream& input)
                 mediaTable['D'].displayAllItems();
 
             default:
-                std::cout << "Invalid action code found in command >>" << originalCommand << std::endl;
+                std::cout << "Invalid action code found in command >> "  << originalCommand << std::endl;
         }
 
         getline(input, line);           //get next line
