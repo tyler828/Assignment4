@@ -12,3 +12,9 @@ void Customer::displayHistory()
         std::cout << *it << std::endl;
     }
 }
+
+std::ostream& operator<<(std::ostream& output, const Customer& rhs) {
+    rhs.displayHistory();
+    
+    return output;
+}

@@ -16,9 +16,9 @@
 
 DVD::DVD()
 {
-    int cKey = int('C');
-    int fKey = int('F');
-    int dKey = int('D');
+    int cKey = 'C';
+    int fKey = 'F';
+    int dKey = 'D';
 
     //create the three collections, insert them into hash table
     MovieCollection* Classic = new MovieCollection;
@@ -38,7 +38,6 @@ int stringToKey(std::string line)
     for(int i = 0; i < line.length(); ++i)
     {
         key += line[i]*(std::pow(10, i));
-        std::cout << key << std::endl;
     }
     
     return key;
