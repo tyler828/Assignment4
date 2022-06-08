@@ -16,30 +16,93 @@
 
 DVD::DVD()
 {
+    //create the three collections, insert them into hash table
+    MovieCollection* Classic = new MovieCollection;
+    orderedCollection.insert('C', Classic);
 
+    MovieCollection* Comedy = new MovieCollection;
+    orderedCollection.insert('F', Comedy);
+
+    MovieCollection* Drama = new MovieCollection;
+    orderedCollection.insert('D', Drama);
 }
 
 bool DVD::addItem(std::string movieToAdd)
 {
-    // Pseudo Code
-    //
-    // Parse the given string and identify the category of the movie to add.
-    // if the category is F, D, or C
-    // {
-    //     Create a movie object based on the given string.
-    //     Call the insert method on the movie collection that contains this
-    //     category of movie. Pass the movie object as the parameter.
-    //     Return true.
-    // }
-    // else
-    // {
-    //     Display an error message.
-    //     Return false.
-    // }
+    //common attributes
+    std::string movieType;
+    std::string director;
+    std::string title;
+    std::string year;
+    int stock;
+
+    //classic attributes
+    std::string month;
+    std::string actor;
+
+    //extract all common attributes
+    movieType = movieToAdd.substr(0, movieToAdd.find(","));     //extract movie type
+    movieToAdd = movieToAdd.substr(movieToAdd.find(",") + 2);   //cut processed attribute out of string
+
+    stock =  std::stoi(movieToAdd.substr(0, movieToAdd.find(",")));     //extract stock
+    movieToAdd = movieToAdd.substr(movieToAdd.find(",") + 2);           //cut processed attribute out of string
+    
+    director = movieToAdd.substr(0, movieToAdd.find(","));     //extract director
+    movieToAdd = movieToAdd.substr(movieToAdd.find(",") + 2);   //cut processed attribute out of string
+    
+    title = movieToAdd.substr(0, movieToAdd.find(","));     //extract movie name
+    movieToAdd = movieToAdd.substr(movieToAdd.find(",") + 2);   //cut processed attribute out of string
+
+    switch(movieType[0])
+    {
+        case('C') : //classic
+
+            //parse classic-specific attributes
+            actor = movieToAdd.substr(0, (movieToAdd.find(" ") + 1) + movieToAdd.substr(movieToAdd.find(" ") + 1).find(" "));       //extract starring actor
+            movieToAdd = movieToAdd.substr((movieToAdd.find(" ") + 1) + movieToAdd.substr(movieToAdd.find(" ") + 1).find(" ") + 1); //cut attribute out of string
+            
+            month = movieToAdd.substr(0, movieToAdd.find(" "));     //extract release month
+            movieToAdd = movieToAdd.substr(movieToAdd.find(" ") + 1);       //cut attribute out of string
+
+            year = movieToAdd;      //process release year
+
+            Classic* movie = new Classic(title, director, year, month, actor, stock);
+            if(orderedCollection['C'].insert(movie))        //BST insert was successful (movie not already in BST)
+            {
+                int key = std::stoi(year) + std::stoi(month);       //create key using month and year
+                movieTable.insert(key, movie);
+            }
+            else    //do nothing.  BST updates stock of movie
+            {
+                delete movie;
+            }
+
+        case('F') : //comedy
+            year = movieToAdd; //set year
+
+            Comedy* movie = new Comedy(title, director, year, stock);
+
+            int key = std::stoi(year);
+            orderedCollection['F'].insert(movie);       //insert movie into Comedy BST
+            movieTable.insert(key, movie);
+
+        case('D') : //drama
+            year = movieToAdd; //set year
+
+            Drama* movie = new Drama(title, director, year, stock); //create comedy object
+
+            int key = std::stoi(year);
+            orderedCollection['D'].insert(movie);       //insert movie into Drama BST
+            movieTable.insert(key, movie);
+
+        default:
+            std::cout << "Invalid movie category" << std::endl;
+    }
 }
 
 bool DVD::borrowItem(std::string movieBorrowed)
 {
+
     // Pseudo Code
     //
     // Parse the given string and identify the category of the movie to borrow.

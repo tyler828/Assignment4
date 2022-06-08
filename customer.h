@@ -2,6 +2,7 @@
 
 #include <list>
 #include <string>
+#include <iostream>
 
 // -------------------------------- customer.h --------------------------------
 // Programmer Name: Team C--     Course Section Number: CSS 343 B
@@ -19,14 +20,15 @@
 class Customer
 {
 public:
-    Customer(std::string name);
+    Customer(std::string name) : name(name) {};
     
     void addHistory(std::string transaction);
 
-    void displayHistory() const;
+    void displayHistory();
 
 private:
     std::string name;
     
     std::list<std::string> history;
 };
+

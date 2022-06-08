@@ -1,8 +1,12 @@
 #pragma once
 
 #include <string>
+#include <iostream>
 
 #include "media.h"
+#include "classic.h"
+#include "comedy.h"
+#include "drama.h"
 #include "movie_collection.h"
 #include "table.h"
 
@@ -32,7 +36,7 @@ public:
     void displayAllItems() const;
 
 private:
-    MyTable<char, MovieCollection> table;
+    MyTable<char, MovieCollection> orderedCollection;
     
-    MyTable<std::string, Movie> movieTable;
+    MyTable<int, Movie> movieTable;
 };
