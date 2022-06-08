@@ -18,15 +18,12 @@
 
 RentalStore::RentalStore()
 {
-
+    DVD* dvdCollection = new DVD;              //create DVD object
+    mediaTable.insert('D', dvdCollection);     //insert into mediaTable (only type of media in table for this project)
 }
 
 void RentalStore::initializeInventory(std::ifstream& input)
 {
-    DVD* dvdCollection = new DVD;       //create DVD object
-    int key = int('D');
-    mediaTable.insert(key, dvdCollection);     //insert into mediaTable (only type of media in table for this project)
-
     std::string line;
     getline(input, line);
 
@@ -37,7 +34,7 @@ void RentalStore::initializeInventory(std::ifstream& input)
             return;
         }
 
-        dvdCollection->addItem(line);  //send line to be parsed by dvdCollection
+        mediaTable['D'].addItem(line);  //send line to be parsed by DVD object
         getline(input, line);           //get next line
     }
 }
@@ -70,8 +67,16 @@ void RentalStore::addCustomers(std::ifstream& input)
 
 void RentalStore::processCommands(std::ifstream& input)
 {
+    std::string originalCommand;
     std::string line;
+
+    //command fields in order they appear
+    std::string commandType;
+    int customerID;
+    std::string mediaType;
+
     getline(input, line);
+    originalCommand = line;
 
     while(!input.eof())     //not end of file
     {
@@ -80,75 +85,89 @@ void RentalStore::processCommands(std::ifstream& input)
             return;
         }
 
-        //parse logic
+        //extract command type
+        commandType = line.substr(0, line.find(" "));
 
-        //switch statement
+        switch(commandType[0])
+        {
+            case('B'):
+                line = line.substr(line.find(" ") + 1);
+
+                //extract customer ID
+                customerID = std::stoi(line.substr(0, line.find(" ")));
+                line = line.substr(line.find(" ") + 1);
+
+                //extract media collection
+                mediaType = line.substr(0, line.find(" "));
+                line = line.substr(line.find(" ") + 1);
+
+                if(!customerTable.exist(customerID)) //customer ID not registered
+                {
+                    std::cout << "Invalid customer ID found in command: " << originalCommand << std::endl;
+                    break;
+                }
+
+                if(!mediaTable.exist(mediaType[0]))  //media collection not in mediaTable
+                {
+                    std::cout << "Invalid media type found in command: " << originalCommand << std::endl;
+                    break;
+                }
+
+                if(mediaTable[mediaType[0]].borrowItem(line))   //attempt to borrow item from collection
+                {
+                    customerTable[customerID].addHistory(originalCommand);
+                }
+
+            case('R'):
+                line = line.substr(line.find(" ") + 1);
+
+                //extract customer ID
+                customerID = std::stoi(line.substr(0, line.find(" ")));
+                line = line.substr(line.find(" ") + 1);
+
+                //extract media collection
+                mediaType = line.substr(0, line.find(" "));
+                line = line.substr(line.find(" ") + 1);
+
+                if(!customerTable.exist(customerID)) //customer ID not registered
+                {
+                    std::cout << "Invalid customer ID found in command >> " << originalCommand << std::endl;
+                    break;
+                }
+
+                if(!mediaTable.exist(mediaType[0]))  //media collection not in mediaTable
+                {
+                    std::cout << "Invalid media type found in command >> " << originalCommand << std::endl;
+                    break;
+                }
+
+                if(mediaTable[mediaType[0]].returnItem(line))   //attempt to borrow item from collection
+                {
+                    customerTable[customerID].addHistory(originalCommand);
+                }
+
+            case('H'):
+                line = line.substr(line.find(" ") + 1);
+
+                //extract customer ID
+                customerID = std::stoi(line.substr(0, line.find(" ")));
+                line = line.substr(line.find(" ") + 1);
+
+                if(!customerTable.exist(customerID)) //customer ID not registered
+                {
+                    std::cout << "Invalid customer ID found in command >> " << originalCommand << std::endl;
+                    break;
+                }
+
+                std::cout << customerTable[customerID] << std::endl;
+
+            case('I'):
+                mediaTable['D'].displayAllItems();
+
+            default:
+                std::cout << "Invalid action code found in command >>" << originalCommand << std::endl;
+        }
 
         getline(input, line);           //get next line
     }
-    // Pseudo Code
-    //
-    // for each line in the input file
-    // {
-    //     Parse the line for the action type.
-    //     if action type is I
-    //     {
-    //         Call the method displayAllItems on the DVD object.
-    //     }
-    //     else if action type is H
-    //     {
-    //         Parse the line for the customer ID.
-    //         if the customer ID exists in the customer table
-    //         {
-    //             Call the method displayHistory on the customer object with this
-    //             ID.
-    //         }
-    //         else
-    //         {
-    //             Display an error message.
-    //         }
-    //     }
-    //     else if action type is B
-    //     {
-    //         Parse the line for the customer ID and the media type.
-    //         if the customer ID exists in the customer table and the media type
-    //         exists in the media table
-    //         {
-    //             Call the method borrowItem on the DVD object. Pass the rest of
-    //             the line as the parameter.
-    //             if borrowItem returns true
-    //             {
-    //                 Call the method addHistory on the customer object with this
-    //                 ID.
-    //             }
-    //         }
-    //         else
-    //         {
-    //             Display an error message.
-    //         }
-    //     }
-    //     else if action type is R
-    //     {
-    //         Parse the line for the customer ID and the media type.
-    //         if the customer ID exists in the customer table and the media type
-    //         exists in the media table
-    //         {
-    //             Call the method returnItem on the DVD object. Pass the rest of
-    //             the line as the parameter.
-    //             if returnItem returns true
-    //             {
-    //                 Call the method addHistory on the customer object with this
-    //                 ID.
-    //             }
-    //         }
-    //         else
-    //         {
-    //             Display an error message.
-    //         }
-    //     }
-    //     else
-    //     {
-    //         Display an error message.
-    //     }
-    // }
 }

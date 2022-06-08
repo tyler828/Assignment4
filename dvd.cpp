@@ -16,29 +16,24 @@
 
 DVD::DVD()
 {
-    int cKey = int('C');
-    int fKey = int('F');
-    int dKey = int('D');
-
     //create the three collections, insert them into hash table
     MovieCollection* Classic = new MovieCollection;
-    orderedCollection.insert(cKey, Classic);
+    orderedCollection.insert('C', Classic);
 
     MovieCollection* Comedy = new MovieCollection;
-    orderedCollection.insert(fKey, Comedy);
+    orderedCollection.insert('F', Comedy);
 
     MovieCollection* Drama = new MovieCollection;
-    orderedCollection.insert(dKey, Drama);
+    orderedCollection.insert('D', Drama);
 }
 
-int stringToKey(std::string line)
+int DVD::stringToKey(std::string line)
 {
     int key = 0;
 
     for(int i = 0; i < line.length(); ++i)
     {
         key += line[i]*(std::pow(10, i));
-        std::cout << key << std::endl;
     }
     
     return key;

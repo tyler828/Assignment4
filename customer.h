@@ -20,15 +20,16 @@
 class Customer
 {
 public:
-    Customer(std::string name) : name(name) {};
+    Customer(std::string input) : name(input) {};
     
     void addHistory(std::string transaction);
 
-    void displayHistory();
-
+    friend std::ostream& operator<<(std::ostream& output, const Customer& rhs);
 private:
     std::string name;
     
     std::list<std::string> history;
+
+    void displayHistory();
 };
 
