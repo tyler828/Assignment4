@@ -85,7 +85,7 @@ bool DVD::addItem(std::string movieToAdd)
             Classic *movie = new Classic(title, director, year, month, actor, stock);
             if (orderedCollection['C'].insert(movie))        //BST insert was successful (movie not already in BST)
             {
-                int key = stringToKey(title);       //create key using month and year
+                int key = stringToKey(actor);       //create key using actor
                 movieTable.insert(key, movie);
             } else    //do nothing.  BST updates stock of movie
             {
@@ -122,7 +122,19 @@ bool DVD::addItem(std::string movieToAdd)
 
 bool DVD::borrowItem(std::string movieBorrowed)
 {
+    std::string movieType;
 
+    movieType = movieBorrowed.substr(0, movieBorrowed.find(" "));       //extract movie type
+    movieBorrowed = movieBorrowed.substr(movieBorrowed.find(" ") + 1);
+
+    switch(movieType[0])
+    {
+        case('C'):
+        case('F'):
+        case('D'):
+        default:
+
+    }
     // Pseudo Code
     //
     // Parse the given string and identify the category of the movie to borrow.

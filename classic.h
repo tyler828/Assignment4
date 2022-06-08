@@ -97,7 +97,7 @@ public:
 
     std::string getYear() const;
 
-    std::string getReleaseMoth() const;
+    std::string getReleaseMonth() const;
 
     std::string getMajorActor() const;
 

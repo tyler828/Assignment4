@@ -118,7 +118,7 @@ bool Classic::operator>(const Movie& rhs) const {
 
 }
 
-std::string Classic::getReleaseMoth() const {
+std::string Classic::getReleaseMonth() const {
     return releaseMonth;
 }
 
@@ -149,7 +149,7 @@ std::ostream& operator<<(std::ostream& output, const Classic& rhs) {
 }
 
 void Classic::print(std::ostream& output) const {
-    output << "Release Month: " << getReleaseMoth() << " Year: " << getYear()
+    output << "Release Month: " << getReleaseMonth() << " Year: " << getYear()
            << " Major Actor: " << getMajorActor() << std::endl;
 }
 
