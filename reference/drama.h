@@ -36,42 +36,6 @@ public:
     // Param: max, the maximum stock of the drama movie.
     Drama(std::string title, std::string director, std::string releaseYear, int max);
 
-    // ---------------------------------operator<----------------------------------
-    // Description: The method operator< overloads the operator <, comparing this
-    // drama movie, which is on the left-hand side of the operator <, with the
-    // drama movie object on the right-hand side based on their directors, then
-    // their titles.
-    //
-    // Post: These two drama movie objects do not change.
-    //
-    // Param: rhs, which is the drama movie object on the right-hand side.
-    //
-    // Return: This method returns true if the name of the director of this drama
-    // movie comes before the name of the director of the drama movie on the
-    // right-hand side with an alphabetical order. This method also returns true if
-    // these two drama movies have the same director but the title of this drama
-    // movie comes before the title of the drama movie on the right-hand side
-    // with an alphabetical order. This method returns false otherwise.
-    bool operator<(const Drama& rhs) const;
-
-    // ---------------------------------operator>----------------------------------
-    // Description: The method operator> overloads the operator >, comparing this
-    // drama movie, which is on the left-hand side of the operator >, with the
-    // drama movie object on the right-hand side based on their directors, then
-    // their titles.
-    //
-    // Post: These two drama movie objects do not change.
-    //
-    // Param: rhs, which is the drama movie object on the right-hand side.
-    //
-    // Return: This method returns true if the name of the director of this drama
-    // movie comes after the name of the director of the drama movie on the
-    // right-hand side with an alphabetical order. This method also returns true if
-    // these two drama movies have the same director but the title of this drama
-    // movie comes after the title of the drama movie on the right-hand side
-    // with an alphabetical order. This method returns false otherwise.
-    bool operator>(const Drama& rhs) const;
-
     // ---------------------------------operator<<----------------------------------
     // Description: The method operator<< overloads the operator <<, displaying the
     // drama movie on the right-hand side of the operator << through the ostream
@@ -85,6 +49,15 @@ public:
     //
     // Return: A reference to the ostream object.
     friend std::ostream& operator<<(std::ostream& output, const Drama& rhs);
+
+    // ---------------------------------getSorting---------------------------------
+    // Description: The method getSorting gets the sorting attributes of this
+    // movie.
+    //
+    // Post: This movie does not change.
+    //
+    // Return: An array that stores the sorting attributes of this movie.
+    std::string* getSorting() const;
 
     std::string getDirector() const;
 

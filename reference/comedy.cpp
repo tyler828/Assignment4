@@ -24,68 +24,6 @@ Comedy::Comedy(std::string title, std::string director, std::string releaseYear,
 
 }
 
-// ---------------------------------operator<----------------------------------
-// Description: The method operator< overloads the operator <, comparing this
-// comedy movie, which is on the left-hand side of the operator <, with the
-// comedy movie object on the right-hand side based on their titles, then the
-// years they were released.
-//
-// Post: These two comedy movie objects do not change.
-//
-// Param: rhs, which is the comedy movie object on the right-hand side.
-//
-// Return: This method returns true if the title of this comedy movie comes
-// before the title of the comedy movie on the right-hand side with an
-// alphabetical order. This method also returns true if these two comedy movies
-// have the same title but this comedy movie was released before the other
-// one. This method returns false otherwise.
-bool Comedy::operator<(const Comedy& rhs) const {
-    if (this->title < rhs.title) {
-        return true;
-    }
-
-    if (this->title == rhs.title) {
-        if (this->releaseYear < rhs.releaseYear) {
-            return true;
-        }
-    }
-
-    return false;
-
-}
-
-// ---------------------------------operator>----------------------------------
-// Description: The method operator> overloads the operator >, comparing this
-// comedy movie, which is on the left-hand side of the operator >, with the
-// comedy movie object on the right-hand side based on their titles, then the
-// years they were released.
-//
-// Post: These two comedy movie objects do not change.
-//
-// Param: rhs, which is the comedy movie object on the right-hand side.
-//
-// Return: This method returns true if the title of this comedy movie comes
-// after the title of the comedy movie on the right-hand side with an
-// alphabetical order. This method also returns true if these two comedy movies
-// have the same title but this comedy movie was released after the other
-// one. This method returns false otherwise.
-bool Comedy::operator>(const Comedy& rhs) const {
-    if (this->title > rhs.title) {
-        return true;
-    }
-
-    if (this->title == rhs.title) {
-        if (this->releaseYear > rhs.releaseYear) {
-            return true;
-        }
-    }
-
-    return false;
-
-}
-
-
-
 std::string Comedy::getTitle() const {
     return title;
 }
@@ -110,4 +48,19 @@ std::ostream& operator<<(std::ostream& output, const Comedy& rhs) {
     std::cout << "Title: " << rhs.getTitle()
               << " Year: " << rhs.getYear() << std::endl;
     return output;
+}
+
+// ---------------------------------getSorting---------------------------------
+// Description: The method getSorting gets the sorting attributes of this
+// movie.
+//
+// Post: This movie does not change.
+//
+// Return: An array that stores the sorting attributes of this movie.
+std::string* Comedy::getSorting() const
+{
+    std::string* sorting = new std::string[2];
+    sorting[0] = this->title;
+    sorting[1] = this->releaseYear;
+    return sorting;
 }

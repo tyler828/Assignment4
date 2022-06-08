@@ -59,7 +59,7 @@ public:
     // major actor of this classic movie comes before the name of the major actor
     // of the classic movie on the right-hand side with an alphabetical order. This
     // method returns false otherwise.
-    bool operator<(const Classic& rhs) const;
+    bool operator<(const Movie& rhs) const;
 
     // ---------------------------------operator>----------------------------------
     // Description: The method operator> overloads the operator >, comparing this
@@ -77,7 +77,7 @@ public:
     // major actor of this classic movie comes after the name of the major actor
     // of the classic movie on the right-hand side with an alphabetical order. This
     // method returns false otherwise.
-    bool operator>(const Classic& rhs) const;
+    bool operator>(const Movie& rhs) const;
 
     // ---------------------------------operator<<----------------------------------
     // Description: The method operator<< overloads the operator <<, displaying the
@@ -98,6 +98,15 @@ public:
     std::string getReleaseMoth() const;
 
     std::string getMajorActor() const;
+
+    // ---------------------------------getSorting---------------------------------
+    // Description: The method getSorting gets the sorting attributes of this
+    // movie.
+    //
+    // Post: This movie does not change.
+    //
+    // Return: An array that stores the sorting attributes of this movie.
+    std::string* getSorting() const;
 
 private:
     // The name of the major actor; the name should include the first name and

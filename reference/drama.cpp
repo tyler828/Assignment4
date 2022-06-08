@@ -24,66 +24,6 @@ Drama::Drama(std::string title, std::string director, std::string releaseYear, i
 
 }
 
-// ---------------------------------operator<----------------------------------
-// Description: The method operator< overloads the operator <, comparing this
-// drama movie, which is on the left-hand side of the operator <, with the
-// drama movie object on the right-hand side based on their directors, then
-// their titles.
-//
-// Post: These two drama movie objects do not change.
-//
-// Param: rhs, which is the drama movie object on the right-hand side.
-//
-// Return: This method returns true if the name of the director of this drama
-// movie comes before the name of the director of the drama movie on the
-// right-hand side with an alphabetical order. This method also returns true if
-// these two drama movies have the same director but the title of this drama
-// movie comes before the title of the drama movie on the right-hand side
-// with an alphabetical order. This method returns false otherwise.
-bool Drama::operator<(const Drama& rhs) const {
-    if (this->director < rhs.director) {
-        return true;
-    }
-
-    if (this->director == rhs.director) {
-        if (this->title < rhs.title) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-// ---------------------------------operator>----------------------------------
-// Description: The method operator> overloads the operator >, comparing this
-// drama movie, which is on the left-hand side of the operator >, with the
-// drama movie object on the right-hand side based on their directors, then
-// their titles.
-//
-// Post: These two drama movie objects do not change.
-//
-// Param: rhs, which is the drama movie object on the right-hand side.
-//
-// Return: This method returns true if the name of the director of this drama
-// movie comes after the name of the director of the drama movie on the
-// right-hand side with an alphabetical order. This method also returns true if
-// these two drama movies have the same director but the title of this drama
-// movie comes after the title of the drama movie on the right-hand side
-// with an alphabetical order. This method returns false otherwise.
-bool Drama::operator>(const Drama& rhs) const {
-    if (this->director > rhs.director) {
-        return true;
-    }
-
-    if (this->director == rhs.director) {
-        if (this->title > rhs.title) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
 std::string Drama::getDirector() const {
     return this->director;
 
@@ -109,4 +49,19 @@ std::ostream& operator<<(std::ostream& output, const Drama& rhs) {
     output << "Director: " << rhs.getDirector()
            << " Title: " << rhs.getTitle() << std::endl;
     return output;
+}
+
+// ---------------------------------getSorting---------------------------------
+// Description: The method getSorting gets the sorting attributes of this
+// movie.
+//
+// Post: This movie does not change.
+//
+// Return: An array that stores the sorting attributes of this movie.
+std::string* Drama::getSorting() const
+{
+    std::string* sorting = new std::string[2];
+    sorting[0] = this->director;
+    sorting[1] = this->title;
+    return sorting;
 }

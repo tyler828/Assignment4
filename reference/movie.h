@@ -62,19 +62,14 @@ public:
     // false otherwise.
     virtual bool operator>(const Movie& rhs) const;
 
-    // ---------------------------------operator<<----------------------------------
-    // Description: The method operator<< overloads the operator <<, displaying the
-    // movie on the right-hand side of the operator << through the ostream object
-    // on the left-hand side.
+    // ---------------------------------getSorting---------------------------------
+    // Description: The method getSorting gets the sorting attributes of this
+    // movie.
     //
-    // Post: This method displayed the movie through the ostream object.
+    // Post: This movie does not change.
     //
-    // Param: output, which is the ostream object.
-    //
-    // Param: rhs, which is the movie to display.
-    //
-    // Return: A reference to the ostream object.
-    // friend std::ostream& operator<<(std::ostream& output, const Movie& rhs);
+    // Return: An array that stores the sorting attributes of this movie.
+    virtual std::string* getSorting() const;
 
 private:
 

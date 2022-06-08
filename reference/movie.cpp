@@ -1,3 +1,4 @@
+#include <string>
 #include "movie.h"
 
 // --------------------------Parametrized Constructor--------------------------
@@ -37,7 +38,26 @@ Movie::Movie(std::string title, std::string director, std::string releaseYear, i
 // false otherwise.
 bool Movie::operator<(const Movie& rhs) const
 {
-    return this->stock < rhs.stock;
+    std::string* thisSorting = getSorting();
+    std::string* rhsSorting = rhs.getSorting();
+    bool result = false;
+
+    // Compare the first attribute.
+    if (thisSorting[0] < rhsSorting[0]) {
+        result = true;
+    }
+
+    // Compare the second attribute.
+    if (thisSorting[0] == rhsSorting[0]) {
+        if (thisSorting[1] < rhsSorting[1]) {
+            result = true;
+        }
+    }
+
+    delete[] thisSorting;
+    delete[] rhsSorting;
+
+    return result;
 }
 
 // ---------------------------------operator>----------------------------------
@@ -53,5 +73,39 @@ bool Movie::operator<(const Movie& rhs) const
 // false otherwise.
 bool Movie::operator>(const Movie& rhs) const
 {
-    return this->stock > rhs.stock;
+    std::string* thisSorting = getSorting();
+    std::string* rhsSorting = rhs.getSorting();
+    bool result = false;
+
+    // Compare the first attribute.
+    if (thisSorting[0] > rhsSorting[0]) {
+        result = true;
+    }
+
+    // Compare the second attribute.
+    if (thisSorting[0] == rhsSorting[0]) {
+        if (thisSorting[1] > rhsSorting[1]) {
+            result = true;
+        }
+    }
+
+    delete[] thisSorting;
+    delete[] rhsSorting;
+
+    return result;
+}
+
+// ---------------------------------getSorting---------------------------------
+// Description: The method getSorting gets the sorting attributes of this
+// movie.
+//
+// Post: This movie does not change.
+//
+// Return: An array that stores the sorting attributes of this movie.
+std::string* Movie::getSorting() const
+{
+    std::string* sorting = new std::string[2];
+    sorting[0] = this->max;
+    sorting[1] = this->stock;
+    return sorting;
 }

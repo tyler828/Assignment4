@@ -36,40 +36,6 @@ public:
     // Param: max, the maximum stock of the comedy movie.
     Comedy(std::string title, std::string director, std::string releaseYear, int max);
 
-    // ---------------------------------operator<----------------------------------
-    // Description: The method operator< overloads the operator <, comparing this
-    // comedy movie, which is on the left-hand side of the operator <, with the
-    // comedy movie object on the right-hand side based on their titles, then the
-    // years they were released.
-    //
-    // Post: These two comedy movie objects do not change.
-    //
-    // Param: rhs, which is the comedy movie object on the right-hand side.
-    //
-    // Return: This method returns true if the title of this comedy movie comes
-    // before the title of the comedy movie on the right-hand side with an
-    // alphabetical order. This method also returns true if these two comedy movies
-    // have the same title but this comedy movie was released before the other
-    // one. This method returns false otherwise.
-    bool operator<(const Comedy& rhs) const;
-
-    // ---------------------------------operator>----------------------------------
-    // Description: The method operator> overloads the operator >, comparing this
-    // comedy movie, which is on the left-hand side of the operator >, with the
-    // comedy movie object on the right-hand side based on their titles, then the
-    // years they were released.
-    //
-    // Post: These two comedy movie objects do not change.
-    //
-    // Param: rhs, which is the comedy movie object on the right-hand side.
-    //
-    // Return: This method returns true if the title of this comedy movie comes
-    // after the title of the comedy movie on the right-hand side with an
-    // alphabetical order. This method also returns true if these two comedy movies
-    // have the same title but this comedy movie was released after the other
-    // one. This method returns false otherwise.
-    bool operator>(const Comedy& rhs) const;
-
     // ---------------------------------operator<<----------------------------------
     // Description: The method operator<< overloads the operator <<, displaying the
     // comedy movie on the right-hand side of the operator << through the ostream
@@ -83,6 +49,15 @@ public:
     //
     // Return: A reference to the ostream object.
     friend std::ostream& operator<<(std::ostream& output, const Comedy& rhs);
+
+    // ---------------------------------getSorting---------------------------------
+    // Description: The method getSorting gets the sorting attributes of this
+    // movie.
+    //
+    // Post: This movie does not change.
+    //
+    // Return: An array that stores the sorting attributes of this movie.
+    std::string* getSorting() const;
 
     std::string getYear() const;
     std::string getTitle() const;
