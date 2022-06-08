@@ -104,7 +104,7 @@ public:
     // Return: An array that stores the sorting attributes of this movie.
     std::string* getSorting() const;
 
-    std::string getReleaseMoth() const;
+    std::string getReleaseMonth() const;
 
     std::string getMajorActor() const;
 
