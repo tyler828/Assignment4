@@ -261,6 +261,37 @@ void MyTable<T1, T2>::remove(const T1& key)
     }
 } // end of the method remove
 
+// -----------------------------------exist-----------------------------------
+// Description: The method exist checks whether the given key exists in this
+// hash table.
+//
+// Post: This hash table does not change.
+//
+// Param: key, the key to check.
+//
+// Return: True if the given key exists in this hash table; false otherwise.
+template <class T1, class T2>
+bool MyTable<T1, T2>::exist(const T1& key) const
+{
+    // Compute the hash value based on the hash function. The hash function
+    // that this hash table uses is key % BUCKETS.
+    int hashValue = hash(key);
+
+    // Locate the bucket based on the hash value. If the bucket is not
+    // empty, check all the nodes in that bucket.
+    Node* current = buckets[hashValue];
+    while (current != nullptr)
+    {
+        // Return true if the given key is found.
+        if (current -> key == key)
+        {
+            return true;
+        }
+        current = current -> next;
+    }
+    return false;
+} // end of the method exist
+
 // -------------------------------------hash-----------------------------------
 // Description:The method hash computes the hash value with the given key.
 // The hash function that this hash table uses is key % BUCKETS (the number of

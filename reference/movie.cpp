@@ -1,6 +1,11 @@
 #include <string>
 #include "movie.h"
 
+Movie::Movie()
+{
+
+}
+
 // --------------------------Parametrized Constructor--------------------------
 // Description: The parametrized constructor creates a movie object based on
 // the given title, director, release year, and maximum stock.

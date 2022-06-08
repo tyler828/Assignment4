@@ -86,6 +86,17 @@ public:
     // Param: key, the key of the key-value pair to remove.
     void remove(const T1& key);
 
+    // -----------------------------------exist-----------------------------------
+    // Description: The method exist checks whether the given key exists in this
+    // hash table.
+    //
+    // Post: This hash table does not change.
+    //
+    // Param: key, the key to check.
+    //
+    // Return: True if the given key exists in this hash table; false otherwise.
+    bool exist(const T1& key) const;
+
 private:
     // My table uses open hashing. The Node struct represents a node in a
     // bucket. The node stores a value and the key of this value.
