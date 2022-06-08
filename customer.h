@@ -5,7 +5,7 @@
 #include <iostream>
 
 // -------------------------------- customer.h --------------------------------
-// Programmer Name: Team C--     Course Section Number: CSS 343 B
+// Programmer Name: Tyler Schmale     Course Section Number: CSS 343 B
 // Creation Date: 5/19/2022
 // Date of Last Modification:
 //
