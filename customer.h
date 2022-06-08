@@ -21,15 +21,13 @@ class Customer
 {
 public:
     Customer(std::string input) : name(input) {};
-    
+
     void addHistory(std::string transaction);
 
-    friend std::ostream& operator<<(std::ostream& output, const Customer& rhs);
+    friend std::ostream& operator<<(std::ostream& output, Customer& rhs);
 private:
     std::string name;
     
     std::list<std::string> history;
-
-    void displayHistory();
 };
 

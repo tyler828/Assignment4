@@ -104,18 +104,32 @@ void RentalStore::processCommands(std::ifstream& input)
                 if(!customerTable.exist(customerID)) //customer ID not registered
                 {
                     std::cout << "Invalid customer ID found in command: " << originalCommand << std::endl;
-                    break;
+                    // break;
                 }
 
-                if(!mediaTable.exist(mediaType[0]))  //media collection not in mediaTable
+                else if(!mediaTable.exist(mediaType[0]))  //media collection not in mediaTable
                 {
                     std::cout << "Invalid media type found in command: " << originalCommand << std::endl;
-                    break;
+                    // break;
                 }
 
-                if(mediaTable[mediaType[0]].borrowItem(line))   //attempt to borrow item from collection
+                else   //attempt to borrow item from collection
                 {
-                    customerTable[customerID].addHistory(originalCommand);
+                    Movie* temp = mediaTable[mediaType[0]].borrowItem(line);
+
+                    // add the transaction if the borrow was successful
+                    if (temp != nullptr)
+                    {
+                        std::string transaction = "Borrow\nTitle: ";
+                        transaction += temp -> getTitle();
+                        transaction += "\n Director: ";
+                        transaction += temp -> getDirector();
+                        transaction += "\n Release Year: ";
+                        transaction += temp -> getYear();
+                        transaction += "\n";
+
+                        customerTable[customerID].addHistory(transaction);
+                    }
                 }
 
             case('R'):
@@ -132,34 +146,48 @@ void RentalStore::processCommands(std::ifstream& input)
                 if(!customerTable.exist(customerID)) //customer ID not registered
                 {
                     std::cout << "Invalid customer ID found in command >> " << originalCommand << std::endl;
-                    break;
+                    // break;
                 }
 
-                if(!mediaTable.exist(mediaType[0]))  //media collection not in mediaTable
+                else if(!mediaTable.exist(mediaType[0]))  //media collection not in mediaTable
                 {
                     std::cout << "Invalid media type found in command >> " << originalCommand << std::endl;
-                    break;
+                    // break;
                 }
-
-                if(mediaTable[mediaType[0]].returnItem(line))   //attempt to borrow item from collection
+                else
                 {
-                    customerTable[customerID].addHistory(originalCommand);
+                    Movie* temp = mediaTable[mediaType[0]].returnItem(line);   //attempt to return item to collection
+
+                    // add the transaction if the return was successful
+                    if (temp != nullptr)
+                    {
+                        std::string transaction = "Return\nTitle: ";
+                        transaction += temp -> getTitle();
+                        transaction += "\n Director: ";
+                        transaction += temp -> getDirector();
+                        transaction += "\n Release Year: ";
+                        transaction += temp -> getYear();
+                        transaction += "\n";
+
+                        customerTable[customerID].addHistory(transaction);
+                    }
                 }
 
             case('H'):
                 line = line.substr(line.find(" ") + 1);
 
                 //extract customer ID
-                customerID = std::stoi(line.substr(0, line.find(" ")));
-                line = line.substr(line.find(" ") + 1);
+                customerID = std::stoi(line);
 
                 if(!customerTable.exist(customerID)) //customer ID not registered
                 {
                     std::cout << "Invalid customer ID found in command >> " << originalCommand << std::endl;
-                    break;
+                    // break;
                 }
-
-                std::cout << customerTable[customerID] << std::endl;
+                else
+                {
+                    std::cout << customerTable[customerID] << std::endl;
+                }
 
             case('I'):
                 mediaTable['D'].displayAllItems();
