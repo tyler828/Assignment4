@@ -2,6 +2,7 @@
 
 #include <string>
 #include <iostream>
+#include <math.h>
 
 #include "media.h"
 #include "classic.h"
@@ -36,7 +37,9 @@ public:
     void displayAllItems() const;
 
 private:
-    MyTable<char, MovieCollection> orderedCollection;
+    MyTable<int, MovieCollection> orderedCollection;
     
     MyTable<int, Movie> movieTable;
+
+    int stringToKey(std::string line);
 };
