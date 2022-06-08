@@ -30,4 +30,3 @@ private:
     
     std::list<std::string> history;
 };
-

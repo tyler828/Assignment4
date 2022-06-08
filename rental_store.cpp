@@ -199,3 +199,4 @@ void RentalStore::processCommands(std::ifstream& input)
         getline(input, line);           //get next line
     }
 }
+

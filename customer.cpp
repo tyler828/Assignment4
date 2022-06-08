@@ -11,4 +11,5 @@ std::ostream& operator<<(std::ostream& output, Customer& rhs) {
         std::cout << *it << std::endl;
     }
     return output;
+
 }
