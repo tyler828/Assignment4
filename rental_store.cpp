@@ -18,15 +18,12 @@
 
 RentalStore::RentalStore()
 {
-
+    DVD* dvdCollection = new DVD;              //create DVD object
+    mediaTable.insert('D', dvdCollection);     //insert into mediaTable (only type of media in table for this project)
 }
 
 void RentalStore::initializeInventory(std::ifstream& input)
 {
-    DVD* dvdCollection = new DVD;       //create DVD object
-    int key = 'D';
-    mediaTable.insert(key, dvdCollection);     //insert into mediaTable (only type of media in table for this project)
-
     std::string line;
     getline(input, line);
 
@@ -37,7 +34,7 @@ void RentalStore::initializeInventory(std::ifstream& input)
             return;
         }
 
-        dvdCollection->addItem(line);  //send line to be parsed by dvdCollection
+        mediaTable['D'].addItem(line);  //send line to be parsed by DVD object
         getline(input, line);           //get next line
     }
 }
@@ -71,6 +68,12 @@ void RentalStore::addCustomers(std::ifstream& input)
 void RentalStore::processCommands(std::ifstream& input)
 {
     std::string line;
+
+    //command fields in order they appear
+    std::string commandType;
+    int customerID;
+    std::string mediaType;
+
     getline(input, line);
 
     while(!input.eof())     //not end of file
@@ -80,7 +83,44 @@ void RentalStore::processCommands(std::ifstream& input)
             return;
         }
 
-        //parse logic
+        //extract command type
+        commandType = line.substr(0, line.find(" "));
+
+        switch(commandType[0])
+        {
+            case('B'):
+                line = line.substr(line.find(" ") + 1);
+
+                //extract customer ID
+                customerID = std::stoi(line.substr(0, line.find(" ")));
+                line = line.substr(line.find(" ") + 1);
+
+                //extract media collection
+                mediaType = line.substr(0, line.find(" "));
+                line = line.substr(line.find(" ") + 1);
+
+                if(!customerTable.exist(customerID)) //customer ID not registered
+                {
+                    return;
+                }
+
+                if(!mediaTable.exist(mediaType[0]))  //media collection not in mediaTable
+                {
+                    return;
+                }
+
+                if(mediaTable[mediaType[0]].borrowItem(line))   //attempt to borrow item from collection
+                {
+
+                }
+                
+
+            case('R'):
+            case('H'):
+            case('I'):
+            default:
+                std::cout << "Invalid action code" << std::endl;
+        }
 
         //switch statement
 
