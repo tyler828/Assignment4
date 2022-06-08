@@ -118,18 +118,6 @@ bool Classic::operator>(const Movie& rhs) const {
 
 }
 
-std::string Classic::getReleaseMoth() const {
-    return releaseMonth;
-}
-
-std::string Classic::getYear() const {
-    return releaseYear;
-}
-
-std::string Classic::getMajorActor() const {
-    return actorName;
-}
-
 // ---------------------------------operator<<----------------------------------
 // Description: The method operator<< overloads the operator <<, displaying the
 // classical movie on the right-hand side of the operator << through the ostream
@@ -167,4 +155,12 @@ std::string* Classic::getSorting() const
     sorting[1] = this->releaseMonth;
     sorting[2] = this->actorName;
     return sorting;
+}
+
+std::string Classic::getReleaseMoth() const {
+    return this->releaseMonth;
+}
+
+std::string Classic::getMajorActor() const {
+    return this->actorName;
 }

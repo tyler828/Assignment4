@@ -61,9 +61,6 @@ public:
     // Return: An array that stores the sorting attributes of this movie.
     std::string* getSorting() const;
 
-    std::string getDirector() const;
-
-    std::string getTitle() const;
 private:
 
 };

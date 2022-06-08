@@ -148,3 +148,15 @@ std::string* Movie::getSorting() const
     sorting[1] = this->stock;
     return sorting;
 } // end of the method getSorting
+
+std::string Movie::getDirector() const {
+    return this->director;
+}
+
+std::string Movie::getTitle() const {
+    return this->title;
+}
+
+std::string Movie::getYear() const {
+    return this->releaseYear;
+}

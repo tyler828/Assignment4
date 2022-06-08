@@ -95,12 +95,6 @@ public:
 
     void print(std::ostream& output) const;
 
-    std::string getYear() const;
-
-    std::string getReleaseMoth() const;
-
-    std::string getMajorActor() const;
-
     // ---------------------------------getSorting---------------------------------
     // Description: The method getSorting gets the sorting attributes of this
     // movie.
@@ -109,6 +103,10 @@ public:
     //
     // Return: An array that stores the sorting attributes of this movie.
     std::string* getSorting() const;
+
+    std::string getReleaseMoth() const;
+
+    std::string getMajorActor() const;
 
 private:
     // The name of the major actor; the name should include the first name and

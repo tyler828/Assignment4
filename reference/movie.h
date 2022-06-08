@@ -101,6 +101,12 @@ public:
     // Return: An array that stores the sorting attributes of this movie.
     virtual std::string* getSorting() const;
 
+    std::string getDirector() const;
+
+    std::string getTitle() const;
+
+    std::string getYear() const;
+
 private:
 
 protected:

@@ -24,14 +24,6 @@ Comedy::Comedy(std::string title, std::string director, std::string releaseYear,
 
 }
 
-std::string Comedy::getTitle() const {
-    return title;
-}
-
-std::string Comedy::getYear() const {
-    return releaseYear;
-}
-
 // ---------------------------------operator<<----------------------------------
 // Description: The method operator<< overloads the operator <<, displaying the
 // comedy movie on the right-hand side of the operator << through the ostream

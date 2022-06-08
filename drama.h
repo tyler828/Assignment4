@@ -9,9 +9,9 @@
 // Date of Last Modification:
 //
 // Purpose: This file is the header file of the Drama class, a subclass of the
-// Movie class. The Drama class overwrites the comparison operators so that
-// the comparison of two Drama movies is based on their directors, and then
-// their titles.
+// Movie class. The Drama class overwrites the method getSoring so that the
+// comparison of two Drama movies is based on their directors, and then their
+// titles. Additionally, the Drama class overwrites the output operator.
 // ----------------------------------------------------------------------------
 
 class Drama : public Movie
@@ -61,9 +61,6 @@ public:
     // Return: An array that stores the sorting attributes of this movie.
     std::string* getSorting() const;
 
-    std::string getDirector() const;
-
-    std::string getTitle() const;
 private:
 
 };

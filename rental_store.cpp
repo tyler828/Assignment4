@@ -86,7 +86,7 @@ void RentalStore::processCommands(std::ifstream& input)
         }
 
         //extract command type
-        commandType = line.substr(0, line.find(" "));
+        commandType = line[0];
 
         switch(commandType[0])
         {

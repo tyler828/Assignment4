@@ -24,15 +24,6 @@ Drama::Drama(std::string title, std::string director, std::string releaseYear, i
 
 }
 
-std::string Drama::getDirector() const {
-    return this->director;
-
-}
-
-std::string Drama::getTitle() const {
-    return this->title;
-}
-
 // ---------------------------------operator<<----------------------------------
 // Description: The method operator<< overloads the operator <<, displaying the
 // drama movie on the right-hand side of the operator << through the ostream
