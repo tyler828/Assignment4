@@ -25,7 +25,6 @@ public:
     void addHistory(std::string transaction);
 
     friend std::ostream& operator<<(std::ostream& output, const Customer& rhs);
-
 private:
     std::string name;
     
