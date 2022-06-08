@@ -45,9 +45,13 @@ std::string Comedy::getYear() const {
 //
 // Return: A reference to the ostream object.
 std::ostream& operator<<(std::ostream& output, const Comedy& rhs) {
-    std::cout << "Title: " << rhs.getTitle()
-              << " Year: " << rhs.getYear() << std::endl;
+    rhs.print(output);
     return output;
+}
+
+void Comedy::print(std::ostream& output) const {
+    std::cout << "Title: " << getTitle()
+              << " Year: " << getYear() << std::endl;
 }
 
 // ---------------------------------getSorting---------------------------------

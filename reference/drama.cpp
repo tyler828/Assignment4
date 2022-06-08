@@ -46,9 +46,13 @@ std::string Drama::getTitle() const {
 //
 // Return: A reference to the ostream object.
 std::ostream& operator<<(std::ostream& output, const Drama& rhs) {
-    output << "Director: " << rhs.getDirector()
-           << " Title: " << rhs.getTitle() << std::endl;
+    rhs.print(output);
     return output;
+}
+
+void Drama::print(std::ostream& output) const {
+    output << "Director: " << getDirector()
+           << " Title: " << getTitle() << std::endl;
 }
 
 // ---------------------------------getSorting---------------------------------

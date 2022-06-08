@@ -11,19 +11,19 @@ int main()
     Movie test("title", "director", "releaseYear", 20);
     MovieCollection BST;
 
-    /* Drama* d1 = new Drama("Good Will Hunting", "Gus Van Sant", "1997", 20);
+    Drama* d1 = new Drama("Good Will Hunting", "Gus Van Sant", "1997", 20);
     Drama* d2 = new Drama("Eternal Sunshine of the Spotless Mind", "Michel Gondry", "2004", 20);
     Drama* d3 = new Drama("Good Morning Vietnam", "Barry Levinson", "1988", 20);
     Drama* d4 = new Drama("Good Morning Vietnam", "Barry Levinson", "1988", 20);
     std::cout << (*d1 < *d2) << std::endl;
     std::cout << (*d1 > *d2) << std::endl;
 
-    Movie* m1 = new Drama("Good Will Hunting", "Gus Van Sant", "1997", 20);
+    /* Movie* m1 = new Drama("Good Will Hunting", "Gus Van Sant", "1997", 20);
     Movie* m2 = new Drama("Eternal Sunshine of the Spotless Mind", "Michel Gondry", "2004", 20);
     std::cout << (*m1 < *m2) << std::endl;
-    std::cout << (*m1 > *m2) << std::endl; */
+    std::cout << (*m1 > *m2) << std::endl;
 
-    /* Comedy* f1 = new Comedy("Sleepless in Seattle", "Nora Ephron", "1993", 20);
+    Comedy* f1 = new Comedy("Sleepless in Seattle", "Nora Ephron", "1993", 20);
     Comedy* f2 = new Comedy("Annie Hall", "Woody Allen", "1977", 20);
     Comedy* f3 = new Comedy("When Harry Met Sally", "Rob Reiner", "1989", 20);
     std::cout << (*f1 < *f2) << std::endl;
@@ -32,7 +32,7 @@ int main()
     Movie* m1 = new Comedy("Sleepless in Seattle", "Nora Ephron", "1993", 20);
     Movie* m2 = new Comedy("Annie Hall", "Woody Allen", "1977", 20);
     std::cout << (*m1 < *m2) << std::endl;
-    std::cout << (*m1 > *m2) << std::endl; */
+    std::cout << (*m1 > *m2) << std::endl;
 
     Classic* c1 = new Classic("Casablanca", "Michael Curtiz", "1942", "8", "Ingrid Bergman", 20);
     Classic* c2 = new Classic("The Wizard of Oz", "Victor Fleming", "1939", "7", "Judy Garland", 20);
@@ -43,11 +43,12 @@ int main()
     Movie* m1 = new Classic("Casablanca", "Michael Curtiz", "1942", "8", "Ingrid Bergman", 20);
     Movie* m2 = new Classic("The Wizard of Oz", "Victor Fleming", "1939", "7", "Judy Garland", 20);
     std::cout << (*m1 < *m2) << std::endl;
-    std::cout << (*m1 > *m2) << std::endl;
+    std::cout << (*m1 > *m2) << std::endl; */
 
 
-    /* BST.insert(d1);
+    BST.insert(d1);
     BST.insert(d2);
     BST.insert(d3);
-    BST.insert(d4); */
+    BST.insert(d4);
+    BST.inOrderTraversal();
 }

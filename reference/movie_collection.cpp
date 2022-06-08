@@ -234,7 +234,7 @@ void MovieCollection::inOrderHelper(Node* root) const
     if (root != nullptr)
     {
         inOrderHelper(root -> left);
-        std::cout << (root -> nodeMovie) << std::endl;
+        std::cout << *(root -> nodeMovie) << std::endl;
         inOrderHelper(root -> right);
     }
 } // end of the method inOrderHelper

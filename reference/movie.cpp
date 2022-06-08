@@ -95,6 +95,27 @@ bool Movie::operator>(const Movie& rhs) const
     return result;
 }
 
+// ---------------------------------operator<<----------------------------------
+// Description: The method operator<< overloads the operator <<, displaying the
+// movie on the right-hand side of the operator << through the ostream
+// object on the left-hand side.
+//
+// Post: This method displayed the movie through the ostream object.
+//
+// Param: output, which is the ostream object.
+//
+// Param: rhs, which is the drama movie to display.
+//
+// Return: A reference to the ostream object.
+std::ostream& operator<<(std::ostream& output, const Movie& rhs) {
+    rhs.print(output);
+    return output;
+}
+
+void Movie::print(std::ostream& output) const {
+
+}
+
 // ---------------------------------getSorting---------------------------------
 // Description: The method getSorting gets the sorting attributes of this
 // movie.

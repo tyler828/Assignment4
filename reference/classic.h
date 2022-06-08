@@ -93,6 +93,8 @@ public:
     // Return: A reference to the ostream object.
     friend std::ostream& operator<<(std::ostream& output, const Classic& rhs);
 
+    void print(std::ostream& output) const;
+
     std::string getYear() const;
 
     std::string getReleaseMoth() const;

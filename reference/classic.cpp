@@ -143,10 +143,14 @@ std::string Classic::getMajorActor() const {
 //
 // Return: A reference to the ostream object.
 std::ostream& operator<<(std::ostream& output, const Classic& rhs) {
-    output << "Release Month: " << rhs.getReleaseMoth() << " Year: " << rhs.getYear() << " Major Actor: "
-           << rhs.getMajorActor() << std::endl;
+    rhs.print(output);
     return output;
 
+}
+
+void Classic::print(std::ostream& output) const {
+    output << "Release Month: " << getReleaseMoth() << " Year: " << getYear()
+           << " Major Actor: " << getMajorActor() << std::endl;
 }
 
 // ---------------------------------getSorting---------------------------------
