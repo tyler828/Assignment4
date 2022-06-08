@@ -85,7 +85,7 @@ bool DVD::addItem(std::string movieToAdd)
             Classic *movie = new Classic(title, director, year, month, actor, stock);
             if (orderedCollection['C'].insert(movie))        //BST insert was successful (movie not already in BST)
             {
-                int key = stringToKey(actor);       //create key using actor
+                int key = stringToKey(actor + month + year);       //create key using actor + month + year
                 movieTable.insert(key, movie);
             } else    //do nothing.  BST updates stock of movie
             {
@@ -99,7 +99,7 @@ bool DVD::addItem(std::string movieToAdd)
 
             Comedy *movie = new Comedy(title, director, year, stock);
 
-            int key = stringToKey(title);
+            int key = stringToKey(title + year);       //create key using title + year
             orderedCollection['F'].insert(movie);       //insert movie into Comedy BST
             movieTable.insert(key, movie);
         }
@@ -110,7 +110,7 @@ bool DVD::addItem(std::string movieToAdd)
 
             Drama *movie = new Drama(title, director, year, stock); //create comedy object
 
-            int key = stringToKey(title);
+            int key = stringToKey(title + director);        //create key using title + director
             orderedCollection['D'].insert(movie);   //insert movie into Drama BST
             movieTable.insert(key, movie);
         }
@@ -122,16 +122,44 @@ bool DVD::addItem(std::string movieToAdd)
 
 bool DVD::borrowItem(std::string movieBorrowed)
 {
-    std::string movieType;
+    std::string director;
+    std::string title;
+    std::string year;
 
-    movieType = movieBorrowed.substr(0, movieBorrowed.find(" "));       //extract movie type
-    movieBorrowed = movieBorrowed.substr(movieBorrowed.find(" ") + 1);
+    //classic attributes
+    std::string month;
 
-    switch(movieType[0])
+    Movie* movie;
+
+    switch(movieBorrowed[0])
     {
         case('C'):
+            movieBorrowed = movieBorrowed.substr(movieBorrowed.find(" ") + 1);  //cut out movie type
+
+            month = movieBorrowed.substr(0, movieBorrowed.find(" "));       //extract month
+            movieBorrowed = movieBorrowed.substr(movieBorrowed.find(" ") + 1);
+
+            year = movieBorrowed.substr(0, movieBorrowed.find(" "));        //extract year
+            movieBorrowed = movieBorrowed.substr(movieBorrowed.find(" ") + 1); //reduce string to only actor
+
+            if(movieTable.exist(stringToKey(movieBorrowed + month + year))) //check for this classic movie
+            {
+                movie = &movieTable[stringToKey(movieBorrowed + month + year)];
+                if(movie->)
+                {
+
+                }
+            }
+
+            std::cout << "" << std::endl;
+            return 0;
+
         case('F'):
+            movieBorrowed = movieBorrowed.substr(movieBorrowed.find(" ") + 1);
+
         case('D'):
+            movieBorrowed = movieBorrowed.substr(movieBorrowed.find(" ") + 1);
+
         default:
 
     }
