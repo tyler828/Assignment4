@@ -2,50 +2,66 @@
 #include <iomanip>
 #include "drama.h"
 
+// --------------------------Parametrized Constructor--------------------------
+// Description: The parametrized constructor creates a drama movie object
+// based on the given title, director, release year, and maximum stock.
+//
+// Pre: The given information must correctly represent the drama movie.
+//
+// Post: A drama movie object that has the given title, director, release
+// year, and maximum stock exists. The current stock is initialized to the
+// maximum stock.
+//
+// Param: title, the title of the drama movie.
+//
+// Param: director, the director of the drama movie.
+//
+// Param: releaseYear, the year when the drama movie was released.
+//
+// Param: max, the maximum stock of the drama movie.
 Drama::Drama(std::string title, std::string director, std::string releaseYear, int max) :
-Movie(title, director, releaseYear, max) {
+        Movie(title, director, releaseYear, max) {
 
-}
-
-bool Drama::operator<(const Drama& rhs) const {
-	if (this->director < rhs.director) {
-		return true;
-	}
-
-	if (this->director == rhs.director) {
-		if (this->title < rhs.title) {
-			return true;
-		}
-	}
-
-	return false;
-}
-
-bool Drama::operator>(const Drama& rhs) const {
-	if (this->director > rhs.director) {
-		return true;
-	}
-
-	if (this->director == rhs.director) {
-		if (this->title > rhs.title) {
-			return true;
-		}
-	}
-
-	return false;
 }
 
 std::string Drama::getDirector() const {
-	return this->director;
+    return this->director;
 
 }
 
 std::string Drama::getTitle() const {
-	return this->title;
+    return this->title;
 }
 
+// ---------------------------------operator<<----------------------------------
+// Description: The method operator<< overloads the operator <<, displaying the
+// drama movie on the right-hand side of the operator << through the ostream
+// object on the left-hand side.
+//
+// Post: This method displayed the drama movie through the ostream object.
+//
+// Param: output, which is the ostream object.
+//
+// Param: rhs, which is the drama movie to display.
+//
+// Return: A reference to the ostream object.
 std::ostream& operator<<(std::ostream& output, const Drama& rhs) {
-	output << "Director: " << rhs.getDirector()
+    output << "Director: " << rhs.getDirector()
            << " Title: " << rhs.getTitle() << std::endl;
     return output;
+}
+
+// ---------------------------------getSorting---------------------------------
+// Description: The method getSorting gets the sorting attributes of this
+// movie.
+//
+// Post: This movie does not change.
+//
+// Return: An array that stores the sorting attributes of this movie.
+std::string* Drama::getSorting() const
+{
+    std::string* sorting = new std::string[2];
+    sorting[0] = this->director;
+    sorting[1] = this->title;
+    return sorting;
 }
