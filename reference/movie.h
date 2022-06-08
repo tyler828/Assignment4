@@ -18,6 +18,10 @@
 class Movie
 {
 public:
+    // ------------------------------Default Constructor---------------------------
+    // Description: The default constructor creates an empty movie object.
+    //
+    // Post: An empty movie object exists.
     Movie();
 
     // --------------------------Parametrized Constructor--------------------------
@@ -73,11 +77,19 @@ public:
     //
     // Param: output, which is the ostream object.
     //
-    // Param: rhs, which is the drama movie to display.
+    // Param: rhs, which is the movie to display.
     //
     // Return: A reference to the ostream object.
     friend std::ostream& operator<<(std::ostream& output, const Movie& rhs);
 
+    // -----------------------------------print------------------------------------
+    // Description: The method print displays this movie through the given ostream
+    // object.
+    //
+    // Post: This method displayed this movie through the given ostream object;
+    // this movie does not change.
+    //
+    // Param: output, an ostream object
     virtual void print(std::ostream& output) const;
 
     // ---------------------------------getSorting---------------------------------

@@ -1,10 +1,15 @@
 #include <string>
+#include <iostream>
 #include "movie.h"
 
+// ------------------------------Default Constructor---------------------------
+// Description: The default constructor creates an empty movie object.
+//
+// Post: An empty movie object exists.
 Movie::Movie()
 {
 
-}
+} // end of the default constructor
 
 // --------------------------Parametrized Constructor--------------------------
 // Description: The parametrized constructor creates a movie object based on
@@ -109,7 +114,7 @@ bool Movie::operator>(const Movie& rhs) const
 //
 // Param: output, which is the ostream object.
 //
-// Param: rhs, which is the drama movie to display.
+// Param: rhs, which is the movie to display.
 //
 // Return: A reference to the ostream object.
 std::ostream& operator<<(std::ostream& output, const Movie& rhs) {
@@ -117,9 +122,17 @@ std::ostream& operator<<(std::ostream& output, const Movie& rhs) {
     return output;
 }
 
+// -----------------------------------print------------------------------------
+// Description: The method print displays this movie through the given ostream
+// object.
+//
+// Post: This method displayed this movie through the given ostream object;
+// this movie does not change.
+//
+// Param: output, an ostream object
 void Movie::print(std::ostream& output) const {
-
-}
+    output << "Title: " << this->title << std::endl;
+} // end of the method print
 
 // ---------------------------------getSorting---------------------------------
 // Description: The method getSorting gets the sorting attributes of this
@@ -134,4 +147,4 @@ std::string* Movie::getSorting() const
     sorting[0] = this->max;
     sorting[1] = this->stock;
     return sorting;
-}
+} // end of the method getSorting
