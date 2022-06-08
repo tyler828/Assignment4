@@ -129,8 +129,6 @@ bool DVD::borrowItem(std::string movieBorrowed)
     //classic attributes
     std::string month;
 
-    Movie* movie;
-
     switch(movieBorrowed[0])
     {
         case('C'):
@@ -144,11 +142,14 @@ bool DVD::borrowItem(std::string movieBorrowed)
 
             if(movieTable.exist(stringToKey(movieBorrowed + month + year))) //check for this classic movie
             {
-                movie = &movieTable[stringToKey(movieBorrowed + month + year)];
-                if(movie->)
+                if(movieTable[stringToKey(movieBorrowed + month + year)].stock > 0) //stock not empty
                 {
-
+                    movieTable[stringToKey(movieBorrowed + month + year)].stock -= 1;
+                    return 1;
                 }
+                
+                std::cout << "No stock avaiable >> " << movieTable[stringToKey(movieBorrowed + month + year)].title << std::endl;
+                return 0;
             }
 
             std::cout << "" << std::endl;
