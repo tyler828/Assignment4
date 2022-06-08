@@ -104,13 +104,11 @@ void RentalStore::processCommands(std::ifstream& input)
                 if(!customerTable.exist(customerID)) //customer ID not registered
                 {
                     std::cout << "Invalid customer ID found in command: " << originalCommand << std::endl;
-                    // break;
                 }
 
                 else if(!mediaTable.exist(mediaType[0]))  //media collection not in mediaTable
                 {
                     std::cout << "Invalid media type found in command: " << originalCommand << std::endl;
-                    // break;
                 }
 
                 else   //attempt to borrow item from collection
@@ -131,6 +129,7 @@ void RentalStore::processCommands(std::ifstream& input)
                         customerTable[customerID].addHistory(transaction);
                     }
                 }
+                break;
 
             case('R'):
                 line = line.substr(line.find(" ") + 1);
@@ -146,13 +145,11 @@ void RentalStore::processCommands(std::ifstream& input)
                 if(!customerTable.exist(customerID)) //customer ID not registered
                 {
                     std::cout << "Invalid customer ID found in command >> " << originalCommand << std::endl;
-                    // break;
                 }
 
                 else if(!mediaTable.exist(mediaType[0]))  //media collection not in mediaTable
                 {
                     std::cout << "Invalid media type found in command >> " << originalCommand << std::endl;
-                    // break;
                 }
                 else
                 {
@@ -172,6 +169,7 @@ void RentalStore::processCommands(std::ifstream& input)
                         customerTable[customerID].addHistory(transaction);
                     }
                 }
+                break;
 
             case('H'):
                 line = line.substr(line.find(" ") + 1);
@@ -182,18 +180,20 @@ void RentalStore::processCommands(std::ifstream& input)
                 if(!customerTable.exist(customerID)) //customer ID not registered
                 {
                     std::cout << "Invalid customer ID found in command >> " << originalCommand << std::endl;
-                    // break;
                 }
                 else
                 {
                     std::cout << customerTable[customerID] << std::endl;
                 }
+                break;
 
             case('I'):
                 mediaTable['D'].displayAllItems();
+                break;
 
             default:
                 std::cout << "Invalid action code found in command >> "  << originalCommand << std::endl;
+                break;
         }
 
         getline(input, line);           //get next line
