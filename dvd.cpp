@@ -3,7 +3,7 @@
 #include "dvd.h"
 
 // --------------------------------- dvd.cpp ----------------------------------
-// Programmer Name: Team C--     Course Section Number: CSS 343 B
+// Programmer Name: Tyler Schmale     Course Section Number: CSS 343 B
 // Creation Date: 5/22/2022
 // Date of Last Modification:
 //
@@ -74,44 +74,51 @@ bool DVD::addItem(std::string movieToAdd)
     switch(movieType[0])
     {
         case('C') : //classic
-
+        {
             //parse classic-specific attributes
-            actor = movieToAdd.substr(0, (movieToAdd.find(" ") + 1) + movieToAdd.substr(movieToAdd.find(" ") + 1).find(" "));       //extract starring actor
-            movieToAdd = movieToAdd.substr((movieToAdd.find(" ") + 1) + movieToAdd.substr(movieToAdd.find(" ") + 1).find(" ") + 1); //cut attribute out of string
-            
+            actor = movieToAdd.substr(0, (movieToAdd.find(" ") + 1) + movieToAdd.substr(movieToAdd.find(" ") + 1).find(
+                    " "));       //extract starring actor
+            movieToAdd = movieToAdd.substr(
+                    (movieToAdd.find(" ") + 1) + movieToAdd.substr(movieToAdd.find(" ") + 1).find(" ") +
+                    1); //cut attribute out of string
+
             month = movieToAdd.substr(0, movieToAdd.find(" "));     //extract release month
             movieToAdd = movieToAdd.substr(movieToAdd.find(" ") + 1);       //cut attribute out of string
 
             year = movieToAdd;      //process release year
 
-            Classic* movie = new Classic(title, director, year, month, actor, stock);
-            if(orderedCollection['C'].insert(movie))        //BST insert was successful (movie not already in BST)
+            Classic *movie = new Classic(title, director, year, month, actor, stock);
+            if (orderedCollection['C'].insert(movie))        //BST insert was successful (movie not already in BST)
             {
                 int key = stringToKey(title);       //create key using month and year
                 movieTable.insert(key, movie);
-            }
-            else    //do nothing.  BST updates stock of movie
+            } else    //do nothing.  BST updates stock of movie
             {
                 delete movie;
             }
+        }
 
         case('F') : //comedy
+        {
             year = movieToAdd; //set year
 
-            Comedy* movie = new Comedy(title, director, year, stock);
+            Comedy *movie = new Comedy(title, director, year, stock);
 
-            int key = stringToKey(title);    
+            int key = stringToKey(title);
             orderedCollection['F'].insert(movie);       //insert movie into Comedy BST
             movieTable.insert(key, movie);
+        }
 
         case('D') : //drama
+        {
             year = movieToAdd; //set year
 
-            Drama* movie = new Drama(title, director, year, stock); //create comedy object
+            Drama *movie = new Drama(title, director, year, stock); //create comedy object
 
-            int key = stringToKey(title);    
+            int key = stringToKey(title);
             orderedCollection['D'].insert(movie);   //insert movie into Drama BST
             movieTable.insert(key, movie);
+        }
 
         default:
             std::cout << "Invalid movie category" << std::endl;
