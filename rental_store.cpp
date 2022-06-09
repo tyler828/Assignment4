@@ -18,7 +18,7 @@
 
 RentalStore::RentalStore()
 {
-    DVD* dvdCollection = new DVD;              //create DVD object
+    DVD* dvdCollection = new DVD();              //create DVD object
     mediaTable.insert('D', dvdCollection);     //insert into mediaTable (only type of media in table for this project)
 }
 
