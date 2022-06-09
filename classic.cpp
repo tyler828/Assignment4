@@ -131,14 +131,15 @@ bool Classic::operator>(const Movie& rhs) const {
 //
 // Return: A reference to the ostream object.
 std::ostream& operator<<(std::ostream& output, const Classic& rhs) {
-    rhs.print(output);
+    rhs.print();
     return output;
 
 }
 
-void Classic::print(std::ostream& output) const {
-    output << "Release Month: " << getReleaseMonth() << " Year: " << getYear()
-           << " Major Actor: " << getMajorActor() << std::endl;
+void Classic::print() const {
+    std::cout << stock << " " << director << " " 
+              << title << " " << actorName << " "
+              << releaseMonth << " " << releaseYear << std::endl;
 }
 
 // ---------------------------------getSorting---------------------------------

@@ -1,6 +1,7 @@
 #include <string>
 
 #include "dvd.h"
+#include <iomanip>
 
 // --------------------------------- dvd.cpp ----------------------------------
 // Programmer Name: Tyler Schmale     Course Section Number: CSS 343 B
@@ -47,8 +48,7 @@ long DVD::stringToKey(std::string line)
 
 void DVD::addItem(std::string movieToAdd)
 {
-    std::cout << movieToAdd << std::endl;
-
+    std::string line = movieToAdd;
     //common attributes
     std::string movieType;
     std::string director;
@@ -92,7 +92,6 @@ void DVD::addItem(std::string movieToAdd)
             if (orderedCollection['C'].insert(movie))        //BST insert was successful (movie not already in BST)
             {
                 long key = stringToKey(actor + month + year);       //create key using actor + month + year
-                //std::cout << key << std::endl;
                 movieTable.insert(key, movie);
             } else    //do nothing.  BST updates stock of movie
             {
@@ -109,7 +108,6 @@ void DVD::addItem(std::string movieToAdd)
             Comedy *movie = new Comedy(title, director, year, stock);
 
             long key = stringToKey(title + year);       //create key using title + year
-            //std::cout << key << std::endl;
             orderedCollection['F'].insert(movie);       //insert movie into Comedy BST
             movieTable.insert(key, movie);
 
@@ -123,7 +121,6 @@ void DVD::addItem(std::string movieToAdd)
             Drama *movie = new Drama(title, director, year, stock); //create comedy object
 
             long key = stringToKey(title + director);        //create key using title + director
-            //std::cout << key << std::endl;
             orderedCollection['D'].insert(movie);   //insert movie into Drama BST
             movieTable.insert(key, movie);
             break;
@@ -131,7 +128,7 @@ void DVD::addItem(std::string movieToAdd)
 
         default:
         {
-            std::cout << "Invalid movie category" << std::endl;
+            std::cout << "Invalid movie category in line >> " << line << std::endl;
             break;
         }
     }
@@ -319,7 +316,7 @@ Movie* DVD::returnItem(std::string movieReturned)
 
 void DVD::displayAllItems()
 {
-    orderedCollection['C'].inOrderTraversal();
-    orderedCollection['D'].inOrderTraversal();
     orderedCollection['F'].inOrderTraversal();
+    orderedCollection['D'].inOrderTraversal();
+    orderedCollection['C'].inOrderTraversal();
 }

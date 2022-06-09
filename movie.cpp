@@ -118,7 +118,7 @@ bool Movie::operator>(const Movie& rhs) const
 //
 // Return: A reference to the ostream object.
 std::ostream& operator<<(std::ostream& output, const Movie& rhs) {
-    rhs.print(output);
+    rhs.print();
     return output;
 }
 
@@ -130,8 +130,8 @@ std::ostream& operator<<(std::ostream& output, const Movie& rhs) {
 // this movie does not change.
 //
 // Param: output, an ostream object
-void Movie::print(std::ostream& output) const {
-    output << "Title: " << this->title << std::endl;
+void Movie::print() const {
+    return;
 } // end of the method print
 
 // ---------------------------------getSorting---------------------------------

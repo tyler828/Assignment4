@@ -93,7 +93,7 @@ public:
     // Return: A reference to the ostream object.
     friend std::ostream& operator<<(std::ostream& output, const Classic& rhs);
 
-    void print(std::ostream& output) const;
+    void print() const;
 
     // ---------------------------------getSorting---------------------------------
     // Description: The method getSorting gets the sorting attributes of this
