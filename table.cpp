@@ -149,63 +149,35 @@ void MyTable<T1, T2>::insert(const T1& key, T2* value)
 // an array-style access to a value in this hash table through a key.
 //
 // Pre: The given key should be mapped to a value in this hash table, and the
-// given key must match the data type that was specified.
+// given key must match the data type that was specified. That is, the
+// given key must exist in this hash table.
 //
 // Post: The method returns a reference to the value that is mapped to the
-// given key. If the given key is not mapped to any values in this hash table,
-// this method will map the given key to a new value (which may be garbage),
-// add this key-value pair to this hash table, and return the reference to
-// this value.
+// given key.
 //
 // Param: key, the key through which a value could be accessed.
 //
 // Return: A reference to a value in this hash table.
 template <class T1, class T2>
-T2& MyTable<T1, T2>::operator[](const T1& key)
+T2& MyTable<T1, T2>::operator[](const T1& key) const
 {
     // Compute the hash value based on the hash function. The hash function
     // that this hash table uses is key % BUCKETS.
     int hashValue = hash(key);
 
-    // Locate the bucket based on the hash value. If the bucket is not empty,
-    // travers through the nodes in the bucket to retrieve the value that is
-    // mapped to the given key.
-    if (buckets[hashValue] != nullptr)
+    // Locate the bucket based on the hash value. Travers through the nodes in
+    // the bucket to retrieve the value that is mapped to the given key.
+    Node* current = buckets[hashValue];
+    T2* result;
+    while (current != nullptr)
     {
-        Node* current = buckets[hashValue];
         if (current -> key == key)
         {
-            return *(current -> value);
+            result = current -> value;
         }
-        while (current -> next != nullptr)
-        {
-            current = current -> next;
-            if (current -> key == key)
-            {
-                return *(current -> value);
-            }
-        }
-
-        // If this line of the code is reached, the pointer current points to
-        // the last node in the bucket, and the given key is not mapped to a
-        // value. Map the given key to a value and add this key-value pair to
-        // this hash table.
-        Node* newNode = new Node();
-        newNode -> key = key;
-        newNode -> value = new T2();
-        current -> next = newNode;
-        return *(newNode -> value);
+        current = current -> next;
     }
-    // If the bucket is empty, the given key is not mapped to a value. Map the
-    // given key to a value and add this key-value pair to this hash table.
-    else
-    {
-        Node* newNode = new Node();
-        newNode -> key = key;
-        newNode -> value = new T2();
-        buckets[hashValue] = newNode;
-        return *(newNode -> value);
-    }
+    return *result;
 } // end of the method operator[]
 
 // -----------------------------------remove-----------------------------------
