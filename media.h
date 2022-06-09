@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-
+#include "movie.h"
 // ---------------------------------- media.h ---------------------------------
 // Programmer Name: Tyler Schmale     Course Section Number: CSS 343 B
 // Creation Date: 5/21/2022

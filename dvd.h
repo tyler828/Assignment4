@@ -34,7 +34,7 @@ public:
     
     Movie* returnItem(std::string movieReturned);
 
-    void displayAllItems() const;
+    void displayAllItems();
 
 private:
     MyTable<int, MovieCollection> orderedCollection;

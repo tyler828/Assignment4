@@ -33,7 +33,7 @@ int DVD::stringToKey(std::string line)
 
     for(int i = 0; i < line.length(); ++i)
     {
-        key += line[i]*(std::pow(10, i));
+        key += line[i]*(pow(10, i));
     }
     
     return key;
@@ -300,7 +300,7 @@ Movie* DVD::returnItem(std::string movieReturned)
     }
 }
 
-void DVD::displayAllItems() const
+void DVD::displayAllItems()
 {
     orderedCollection['C'].inOrderTraversal();
     orderedCollection['D'].inOrderTraversal();
