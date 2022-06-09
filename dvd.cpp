@@ -42,8 +42,7 @@ long DVD::stringToKey(std::string line)
 
 void DVD::addItem(std::string movieToAdd)
 {
-    std::cout << movieToAdd << std::endl;
-
+    std::string line = movieToAdd;
     //common attributes
     std::string movieType;
     std::string director;
@@ -123,7 +122,7 @@ void DVD::addItem(std::string movieToAdd)
 
         default:
         {
-            std::cout << "Invalid movie category" << std::endl;
+            std::cout << "Invalid movie category in line >> " << line << std::endl;
             break;
         }
     }
@@ -311,7 +310,7 @@ Movie* DVD::returnItem(std::string movieReturned)
 
 void DVD::displayAllItems()
 {
-    orderedCollection['C'].inOrderTraversal();
-    orderedCollection['D'].inOrderTraversal();
     orderedCollection['F'].inOrderTraversal();
+    orderedCollection['D'].inOrderTraversal();
+    orderedCollection['C'].inOrderTraversal();
 }
