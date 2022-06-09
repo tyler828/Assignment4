@@ -10,8 +10,8 @@ int main() {
     RentalStore Blockbuster;
 
     Blockbuster.initializeInventory(movies);
-    //Blockbuster.addCustomers(customers);
-    //Blockbuster.processCommands(commands);
+    Blockbuster.addCustomers(customers);
+    Blockbuster.processCommands(commands);
 
     return 0;
 }

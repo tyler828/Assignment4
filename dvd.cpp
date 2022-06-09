@@ -27,6 +27,11 @@ DVD::DVD()
     orderedCollection.insert('D', Drama);
 }
 
+DVD::~DVD()
+{
+
+}
+
 long DVD::stringToKey(std::string line)
 {
     long key = 0;

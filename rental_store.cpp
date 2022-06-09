@@ -22,6 +22,11 @@ RentalStore::RentalStore()
     mediaTable.insert('D', dvdCollection);     //insert into mediaTable (only type of media in table for this project)
 }
 
+RentalStore::~RentalStore()
+{
+
+}
+
 void RentalStore::initializeInventory(std::ifstream& input)
 {
     std::string line;
