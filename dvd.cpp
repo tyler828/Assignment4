@@ -40,7 +40,7 @@ int DVD::stringToKey(std::string line)
 }
 
 
-bool DVD::addItem(std::string movieToAdd)
+void DVD::addItem(std::string movieToAdd)
 {
     //common attributes
     std::string movieType;

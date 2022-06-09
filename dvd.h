@@ -28,7 +28,7 @@ class DVD : public Media
 public:
     DVD();
 
-    bool addItem(std::string movieToAdd);
+    void addItem(std::string movieToAdd);
 
     Movie* borrowItem(std::string movieBorrowed);
     
