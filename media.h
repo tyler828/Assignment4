@@ -17,6 +17,8 @@
 class Media
 {
 public:
+    virtual ~Media() {};
+
     virtual void addItem(std::string itemToAdd) = 0;
 
     virtual Movie* borrowItem(std::string itemBorrowed) = 0;

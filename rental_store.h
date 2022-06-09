@@ -27,8 +27,6 @@ class RentalStore
 {
 public:
     RentalStore();
-    
-    ~RentalStore();
 
     void initializeInventory(std::ifstream& input);
 
