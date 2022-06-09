@@ -91,6 +91,7 @@ void DVD::addItem(std::string movieToAdd)
                 delete movie;
             }
             break;
+
         }
 
         case('F') : //comedy
