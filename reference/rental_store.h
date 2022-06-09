@@ -7,7 +7,7 @@
 #include "customer.h"
 
 // ------------------------------ rental_store.h ------------------------------
-// Programmer Name: Team C--     Course Section Number: CSS 343 B
+// Programmer Name: Tyler Schmale     Course Section Number: CSS 343 B
 // Creation Date: 5/22/2022
 // Date of Last Modification:
 //
