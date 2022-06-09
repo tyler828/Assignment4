@@ -39,7 +39,6 @@ void RentalStore::initializeInventory(std::ifstream& input)
     }
 }
 
-
 void RentalStore::addCustomers(std::ifstream& input)
 {
     std::string line;
