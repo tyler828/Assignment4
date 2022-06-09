@@ -104,7 +104,7 @@ private:
         T1 key;
         T2* value;
 
-        Node() : next(nullptr)
+        Node() : next(nullptr), value(nullptr)
         {
 
         }
@@ -130,7 +130,5 @@ private:
     // Return: The hash value of the given key.
     int hash(const T1& key) const;
 };
-
-
 
 #include "table.cpp"

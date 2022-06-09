@@ -124,9 +124,9 @@ void RentalStore::processCommands(std::ifstream& input)
                     {
                         std::string transaction = "Borrow\nTitle: ";
                         transaction += temp -> getTitle();
-                        transaction += "\n Director: ";
+                        transaction += "\nDirector: ";
                         transaction += temp -> getDirector();
-                        transaction += "\n Release Year: ";
+                        transaction += "\nRelease Year: ";
                         transaction += temp -> getYear();
                         transaction += "\n";
 
