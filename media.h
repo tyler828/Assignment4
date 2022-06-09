@@ -23,7 +23,7 @@ public:
     
     virtual Movie* returnItem(std::string itemReturn) = 0;
 
-    virtual void displayAllItems() const = 0;
+    virtual void displayAllItems() = 0;
 
 private:
 
