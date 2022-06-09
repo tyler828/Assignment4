@@ -30,9 +30,9 @@ public:
 
     bool addItem(std::string movieToAdd);
 
-    bool borrowItem(std::string movieBorrowed);
+    Movie* borrowItem(std::string movieBorrowed);
     
-    bool returnItem(std::string movieReturned);
+    Movie* returnItem(std::string movieReturned);
 
     void displayAllItems() const;
 

@@ -19,9 +19,9 @@ class Media
 public:
     virtual bool addItem(std::string itemToAdd) = 0;
 
-    virtual bool borrowItem(std::string itemBorrowed) = 0;
+    virtual Movie* borrowItem(std::string itemBorrowed) = 0;
     
-    virtual bool returnItem(std::string itemReturn) = 0;
+    virtual Movie* returnItem(std::string itemReturn) = 0;
 
     virtual void displayAllItems() const = 0;
 

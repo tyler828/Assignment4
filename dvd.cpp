@@ -120,7 +120,7 @@ bool DVD::addItem(std::string movieToAdd)
     }
 }
 
-bool DVD::borrowItem(std::string movieBorrowed)
+Movie* DVD::borrowItem(std::string movieBorrowed)
 {
     std::string director;
     std::string title;
@@ -128,6 +128,9 @@ bool DVD::borrowItem(std::string movieBorrowed)
 
     //classic attributes
     std::string month;
+    std::string actor;
+
+    Movie* movie;
 
     switch(movieBorrowed[0])
     {
@@ -138,111 +141,168 @@ bool DVD::borrowItem(std::string movieBorrowed)
             movieBorrowed = movieBorrowed.substr(movieBorrowed.find(" ") + 1);
 
             year = movieBorrowed.substr(0, movieBorrowed.find(" "));        //extract year
-            movieBorrowed = movieBorrowed.substr(movieBorrowed.find(" ") + 1); //reduce string to only actor
+            actor = movieBorrowed.substr(movieBorrowed.find(" ") + 1); //reduce string to only actor
 
-            if(movieTable.exist(stringToKey(movieBorrowed + month + year))) //check for this classic movie
+            if(movieTable.exist(stringToKey(actor + month + year))) //check for this classic movie
             {
-                if(movieTable[stringToKey(movieBorrowed + month + year)].stock > 0) //stock not empty
+                movie = &movieTable[stringToKey(actor + month + year)];
+                if(movie->stock > 0) //stock not empty
                 {
-                    movieTable[stringToKey(movieBorrowed + month + year)].stock -= 1;
-                    return 1;
+                    movie->stock -= 1;
+                    return movie;
                 }
                 
-                std::cout << "No stock avaiable >> " << movieTable[stringToKey(movieBorrowed + month + year)].title << std::endl;
-                return 0;
+                std::cout << "No stock available >> " << movie->title << std::endl;
+                return nullptr;
             }
 
-            std::cout << "" << std::endl;
-            return 0;
+            std::cout << "Invalid movie >> " << month << " " << year << " " << actor << std::endl;
+            return nullptr;
 
         case('F'):
             movieBorrowed = movieBorrowed.substr(movieBorrowed.find(" ") + 1);
 
+            title = movieBorrowed.substr(0, movieBorrowed.find(","));       //extract title
+            year = movieBorrowed.substr(movieBorrowed.find(",") + 2);      //reduce string to only year
+
+            if(movieTable.exist(stringToKey(title + year))) //check for this comedy movie
+            {
+                movie = &movieTable[stringToKey(title + year)];
+                if(movie->stock > 0) //stock not empty
+                {
+                    movie->stock -= 1;
+                    return movie;
+                }
+                
+                std::cout << "No stock available >> " << movie->title << std::endl;
+                return nullptr;
+            }
+
+            std::cout << "Invalid movie >> " << title << ", " << year << std::endl;
+            return nullptr;
+
         case('D'):
             movieBorrowed = movieBorrowed.substr(movieBorrowed.find(" ") + 1);
 
-        default:
+            director = movieBorrowed.substr(0, movieBorrowed.find(","));       //extract director
+            movieBorrowed = movieBorrowed.substr(movieBorrowed.find(",") + 2);      //reduce string to only title
+            title = movieBorrowed.substr(0, movieBorrowed.find(","));      //remove trailing comma
 
+            if(movieTable.exist(stringToKey(title + director))) //check for this comedy movie
+            {
+                movie = &movieTable[stringToKey(title + director)];
+                if(movie->stock > 0) //stock not empty
+                {
+                    movie->stock -= 1;
+                    return movie;
+                }
+                
+                std::cout << "No stock available >> " << movie->title << std::endl;
+                return nullptr;
+            }
+
+            std::cout << "Invalid movie >> " << director << ", " << title << std::endl;
+            return nullptr;
+
+        default:
+            std::cout << "Invalid movie category >> " << movieBorrowed[0] << std::endl;
+            return nullptr;
     }
-    // Pseudo Code
-    //
-    // Parse the given string and identify the category of the movie to borrow.
-    // if the category is F, D, or C
-    // {
-    //     Create a movie object based on the given string.
-    //     Call the retrieve method on the movie collection that contains this
-    //     category of movie. Pass the movie object as the parameter.
-    //     if the pointer returned by the retrieve method is not a null pointer
-    //     {
-    //         if there is at least one movie DVD in stock
-    //         {
-    //             Decrease the stock of this movie by one.
-    //             Return true.
-    //         {
-    //         else
-    //         {
-    //             Display an error message.
-    //             Return false.
-    //         }
-    //     }
-    //     else
-    //     {
-    //         Display an error message.
-    //         Return false.
-    //     }
-    // }
-    // else
-    // {
-    //     Display an error message.
-    //     Return false.
-    // }
 }
 
-bool DVD::returnItem(std::string movieReturned)
+Movie* DVD::returnItem(std::string movieReturned)
 {
-    // Pseudo Code
-    //
-    // Parse the given string and identify the category of the movie to return.
-    // if the category is F, D, or C
-    // {
-    //     Create a movie object based on the given string.
-    //     Call the retrieve method on the movie collection that contains this
-    //     category of movie. Pass the movie object as the parameter.
-    //     if the pointer returned by the retrieve method is not a null pointer
-    //     {
-    //         if the number of the movie DVDs in stock is less than the
-    //         maximum number
-    //         {
-    //             Increase the stock of this movie by one.
-    //             Return true.
-    //         {
-    //         else
-    //         {
-    //             Display an error message.
-    //             Return false.
-    //         }
-    //     }
-    //     else
-    //     {
-    //         Display an error message.
-    //         Return false.
-    //     }
-    // }
-    // else
-    // {
-    //     Display an error message.
-    //     Return false.
-    // }
+    std::string director;
+    std::string title;
+    std::string year;
+
+    //classic attributes
+    std::string month;
+    std::string actor;
+
+    Movie* movie;
+
+    switch(movieReturned[0])
+    {
+        case('C'):
+            movieReturned = movieReturned.substr(movieReturned.find(" ") + 1);  //cut out movie type
+
+            month = movieReturned.substr(0, movieReturned.find(" "));       //extract month
+            movieReturned = movieReturned.substr(movieReturned.find(" ") + 1);
+
+            year = movieReturned.substr(0, movieReturned.find(" "));        //extract year
+            actor = movieReturned.substr(movieReturned.find(" ") + 1); //reduce string to only actor
+
+            if(movieTable.exist(stringToKey(actor + month + year))) //check for this classic movie
+            {
+                movie = &movieTable[stringToKey(actor + month + year)];
+                if(movie->stock < movie->max) //stock not empty
+                {
+                    movie->stock += 1;
+                    return movie;
+                }
+                
+                std::cout << "No stock available >> " << movie->title << std::endl;
+                return nullptr;
+            }
+
+            std::cout << "Invalid movie >> " << month << " " << year << " " << actor << std::endl;
+            return nullptr;
+
+        case('F'):
+            movieReturned = movieReturned.substr(movieReturned.find(" ") + 1);
+
+            title = movieReturned.substr(0, movieReturned.find(","));       //extract title
+            year = movieReturned.substr(movieReturned.find(",") + 2);      //reduce string to only year
+
+            if(movieTable.exist(stringToKey(title + year))) //check for this comedy movie
+            {
+                movie = &movieTable[stringToKey(title + year)];
+                if(movie->stock < movie->max) //stock not empty
+                {
+                    movie->stock += 1;
+                    return movie;
+                }
+                
+                std::cout << "No stock available >> " << movie->title << std::endl;
+                return nullptr;
+            }
+
+            std::cout << "Invalid movie >> " << title << ", " << year << std::endl;
+            return nullptr;
+
+        case('D'):
+            movieReturned = movieReturned.substr(movieReturned.find(" ") + 1);
+
+            director = movieReturned.substr(0, movieReturned.find(","));       //extract director
+            movieReturned = movieReturned.substr(movieReturned.find(",") + 2);      //reduce string to only title
+            title = movieReturned.substr(0, movieReturned.find(","));      //remove trailing comma
+
+            if(movieTable.exist(stringToKey(title + director))) //check for this comedy movie
+            {
+                movie = &movieTable[stringToKey(title + director)];
+                if(movie->stock < movie->max) //stock not empty
+                {
+                    movie->stock += 1;
+                    return movie;
+                }
+                
+                std::cout << "No stock available >> " << movie->title << std::endl;
+                return nullptr;
+            }
+
+            std::cout << "Invalid movie >> " << director << ", " << title << std::endl;
+            return nullptr;
+
+        default:
+            std::cout << "Invalid movie category >> " << movieReturned[0] << std::endl;
+            return nullptr;
+    }
 }
 
 void DVD::displayAllItems() const
 {
-    // Pseudo Code
-    //
-    // Call the inOrderTraversal method on the movie collection that contains
-    // comedy movies.
-    // Call the inOrderTraversal method on the movie collection that contains
-    // drama movies.
-    // Call the inOrderTraversal method on the movie collection that contains
-    // classical movies.
+    orderedCollection['C'].inOrderTraversal();
+    orderedCollection['D'].inOrderTraversal();
+    orderedCollection['F'].inOrderTraversal();
 }
