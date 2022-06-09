@@ -2,16 +2,16 @@
 #include <fstream>
 
 
-int main(){
+int main() {
     std::ifstream commands("data4commands.txt");
     std::ifstream customers("data4customers.txt");
     std::ifstream movies("data4movies.txt");
 
     RentalStore Blockbuster;
 
-    Blockbuster.initializeInventory(commands);
-    // Blockbuster.addCustomers(customers);
-    // Blockbuster.processCommands(movies);
+    Blockbuster.initializeInventory(movies);
+    //Blockbuster.addCustomers(customers);
+    //Blockbuster.processCommands(commands);
 
     return 0;
 }

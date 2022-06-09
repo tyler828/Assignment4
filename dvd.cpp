@@ -71,11 +71,10 @@ void DVD::addItem(std::string movieToAdd)
         case('C') : //classic
         {
             //parse classic-specific attributes
-            actor = movieToAdd.substr(0, (movieToAdd.find(" ") + 1) + movieToAdd.substr(movieToAdd.find(" ") + 1).find(
-                    " "));       //extract starring actor
-            movieToAdd = movieToAdd.substr(
-                    (movieToAdd.find(" ") + 1) + movieToAdd.substr(movieToAdd.find(" ") + 1).find(" ") +
-                    1); //cut attribute out of string
+            actor = movieToAdd.substr(0,movieToAdd.find(" ") + 1);       //extract starring actor
+            movieToAdd = movieToAdd.substr(movieToAdd.find(" ") + 1); //cut attribute out of string
+            actor += movieToAdd.substr(0,movieToAdd.find(" "));       //extract starring actor
+            movieToAdd = movieToAdd.substr(movieToAdd.find(" ") + 1); //cut attribute out of string
 
             month = movieToAdd.substr(0, movieToAdd.find(" "));     //extract release month
             movieToAdd = movieToAdd.substr(movieToAdd.find(" ") + 1);       //cut attribute out of string
@@ -91,6 +90,7 @@ void DVD::addItem(std::string movieToAdd)
             {
                 delete movie;
             }
+            break;
         }
 
         case('F') : //comedy
@@ -102,6 +102,7 @@ void DVD::addItem(std::string movieToAdd)
             int key = stringToKey(title + year);       //create key using title + year
             orderedCollection['F'].insert(movie);       //insert movie into Comedy BST
             movieTable.insert(key, movie);
+            break;
         }
 
         case('D') : //drama
@@ -113,10 +114,14 @@ void DVD::addItem(std::string movieToAdd)
             int key = stringToKey(title + director);        //create key using title + director
             orderedCollection['D'].insert(movie);   //insert movie into Drama BST
             movieTable.insert(key, movie);
+            break;
         }
 
         default:
+        {
             std::cout << "Invalid movie category" << std::endl;
+            break;
+        }
     }
 }
 
