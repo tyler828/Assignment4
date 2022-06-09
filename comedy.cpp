@@ -37,13 +37,13 @@ Comedy::Comedy(std::string title, std::string director, std::string releaseYear,
 //
 // Return: A reference to the ostream object.
 std::ostream& operator<<(std::ostream& output, const Comedy& rhs) {
-    rhs.print(output);
+    rhs.print();
     return output;
 }
 
-void Comedy::print(std::ostream& output) const {
-    std::cout << "Title: " << getTitle()
-              << " Year: " << getYear() << std::endl;
+void Comedy::print() const {
+    std::cout << stock << " " << director << " " 
+              << title << " " << releaseYear << std::endl;
 }
 
 // ---------------------------------getSorting---------------------------------

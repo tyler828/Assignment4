@@ -37,13 +37,13 @@ Drama::Drama(std::string title, std::string director, std::string releaseYear, i
 //
 // Return: A reference to the ostream object.
 std::ostream& operator<<(std::ostream& output, const Drama& rhs) {
-    rhs.print(output);
+    rhs.print();
     return output;
 }
 
-void Drama::print(std::ostream& output) const {
-    output << "Director: " << getDirector()
-           << " Title: " << getTitle() << std::endl;
+void Drama::print() const {
+    std::cout << stock << " " << director << " " 
+              << title << " " << releaseYear << std::endl;
 }
 
 // ---------------------------------getSorting---------------------------------

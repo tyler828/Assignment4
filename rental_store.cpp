@@ -187,6 +187,8 @@ void RentalStore::processCommands(std::ifstream& input)
                 break;
 
             case('I'):
+                std::cout << std::endl << std::endl
+                << "###------------------------Inventory------------------------###" << std::endl << std::endl;
                 mediaTable['D'].displayAllItems();
                 break;
 

@@ -90,7 +90,7 @@ public:
     // this movie does not change.
     //
     // Param: output, an ostream object
-    virtual void print(std::ostream& output) const;
+    virtual void print() const;
 
     // ---------------------------------getSorting---------------------------------
     // Description: The method getSorting gets the sorting attributes of this
