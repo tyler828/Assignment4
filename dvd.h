@@ -41,5 +41,5 @@ private:
     
     MyTable<int, Movie> movieTable;
 
-    int stringToKey(std::string line);
+    long stringToKey(std::string line);
 };

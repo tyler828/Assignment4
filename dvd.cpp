@@ -27,13 +27,13 @@ DVD::DVD()
     orderedCollection.insert('D', Drama);
 }
 
-int DVD::stringToKey(std::string line)
+long DVD::stringToKey(std::string line)
 {
-    int key = 0;
+    long key = 0;
 
     for(int i = 0; i < line.length(); ++i)
     {
-        key += line[i]*(pow(10, i));
+        key += line[i]*(pow(2, i));
     }
     
     return key;
@@ -42,6 +42,8 @@ int DVD::stringToKey(std::string line)
 
 void DVD::addItem(std::string movieToAdd)
 {
+    std::cout << movieToAdd << std::endl;
+
     //common attributes
     std::string movieType;
     std::string director;
@@ -84,7 +86,8 @@ void DVD::addItem(std::string movieToAdd)
             Classic *movie = new Classic(title, director, year, month, actor, stock);
             if (orderedCollection['C'].insert(movie))        //BST insert was successful (movie not already in BST)
             {
-                int key = stringToKey(actor + month + year);       //create key using actor + month + year
+                long key = stringToKey(actor + month + year);       //create key using actor + month + year
+                //std::cout << key << std::endl;
                 movieTable.insert(key, movie);
             } else    //do nothing.  BST updates stock of movie
             {
@@ -100,9 +103,11 @@ void DVD::addItem(std::string movieToAdd)
 
             Comedy *movie = new Comedy(title, director, year, stock);
 
-            int key = stringToKey(title + year);       //create key using title + year
+            long key = stringToKey(title + year);       //create key using title + year
+            //std::cout << key << std::endl;
             orderedCollection['F'].insert(movie);       //insert movie into Comedy BST
             movieTable.insert(key, movie);
+
             break;
         }
 
@@ -112,7 +117,8 @@ void DVD::addItem(std::string movieToAdd)
 
             Drama *movie = new Drama(title, director, year, stock); //create comedy object
 
-            int key = stringToKey(title + director);        //create key using title + director
+            long key = stringToKey(title + director);        //create key using title + director
+            //std::cout << key << std::endl;
             orderedCollection['D'].insert(movie);   //insert movie into Drama BST
             movieTable.insert(key, movie);
             break;
