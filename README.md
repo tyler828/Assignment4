@@ -5,7 +5,7 @@ Movie Rental System - Assignment 4 for CSS 343
 How to run the Movie rental system:
 
 run.sh and valgrind.sh will compile and run the program
-To manually compile, compile all c++ files using g++ with c++ 11 or later
+To manually compile, compile all c++ files exxcpect table.cpp using g++ with c++ 11 or later
 
 
 # contribution
