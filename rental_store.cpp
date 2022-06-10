@@ -138,8 +138,8 @@ void RentalStore::processCommands(std::ifstream& input)
     int customerID;
     std::string mediaType;
 
-    getline(input, originalCommand);
-    line = originalCommand;
+    getline(input, line);
+    originalCommand = line;
 
     while(!input.eof())     //not end of file
     {
@@ -246,6 +246,7 @@ void RentalStore::processCommands(std::ifstream& input)
                 }
                 else
                 {
+                    std::cout << "Customer History - " << line << std::endl;
                     std::cout << customerTable[customerID] << std::endl;
                 }
                 break;
@@ -260,8 +261,8 @@ void RentalStore::processCommands(std::ifstream& input)
                 std::cout << "Invalid action code found in command >> "  << originalCommand << std::endl;
                 break;
         }
-
         getline(input, line);           //get next line
+        originalCommand = line;
     }
 }
 

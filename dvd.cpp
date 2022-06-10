@@ -28,14 +28,9 @@ DVD::DVD()
     orderedCollection.insert('D', Drama);
 }
 
-DVD::~DVD()
+long long DVD::stringToKey(std::string line)
 {
-
-}
-
-long DVD::stringToKey(std::string line)
-{
-    long key = 0;
+    long long key = 0;
 
     for(int i = 0; i < line.length(); ++i)
     {
@@ -105,18 +100,18 @@ void DVD::addItem(std::string movieToAdd)
             movieToAdd = movieToAdd.substr(movieToAdd.find(" ") + 1);       //cut attribute out of string
 
             year = movieToAdd;      //process release year
-
+            
             Classic *movie = new Classic(title, director, year, month, actor, stock);
             if (orderedCollection['C'].insert(movie))        //BST insert was successful (movie not already in BST)
             {
-                long key = stringToKey(actor + month + year);       //create key using actor + month + year
+                long long key = stringToKey(actor + month + year);       //create key using actor + month + year
                 movieTable.insert(key, movie);
             } else    //do nothing.  BST updates stock of movie
             {
                 delete movie;
             }
-            break;
 
+            break;
         }
 
         case('F') : //comedy
@@ -125,7 +120,7 @@ void DVD::addItem(std::string movieToAdd)
 
             Comedy *movie = new Comedy(title, director, year, stock);
 
-            long key = stringToKey(title + year);       //create key using title + year
+            long long key = stringToKey(title + year);       //create key using title + year
             orderedCollection['F'].insert(movie);       //insert movie into Comedy BST
             movieTable.insert(key, movie);
 
@@ -138,9 +133,10 @@ void DVD::addItem(std::string movieToAdd)
 
             Drama *movie = new Drama(title, director, year, stock); //create comedy object
 
-            long key = stringToKey(title + director);        //create key using title + director
+            long long key = stringToKey(title + director);        //create key using title + director
             orderedCollection['D'].insert(movie);   //insert movie into Drama BST
             movieTable.insert(key, movie);
+
             break;
         }
 
