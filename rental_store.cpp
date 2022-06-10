@@ -64,6 +64,11 @@ void RentalStore::initializeInventory(std::ifstream& input)
             return;
         }
 
+        if(line.back() == '\r')  //remove end line character
+        {
+            line.pop_back();
+        }
+
         mediaTable['D'].addItem(line);  //send line to be parsed by DVD object
         getline(input, line);           //get next line
     }
@@ -94,6 +99,11 @@ void RentalStore::addCustomers(std::ifstream& input)
         if(line.empty()) //empty final line
         {
             return;
+        }
+
+        if(line.back() == '\r')  //remove end line character
+        {
+            line.pop_back();
         }
 
         //create customer object, initialize it's attributes
@@ -146,6 +156,11 @@ void RentalStore::processCommands(std::ifstream& input)
         if(line.empty())        //empty final line
         {
             return;
+        }
+
+        if(line.back() == '\r')  //remove end line character
+        {
+            line.pop_back();
         }
 
         //extract command type
